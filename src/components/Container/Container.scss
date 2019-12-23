@@ -1,0 +1,29 @@
+@import '../../styles/settings.scss';
+
+.container {
+  width: 1170px;
+  border: 2px solid red;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+img {
+  width: 250px;
+  border: 1px solid red;
+}
+
+.searchEngine {
+
+}
+
+.cart {
+
+}
