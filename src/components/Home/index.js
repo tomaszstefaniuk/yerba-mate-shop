@@ -1,9 +1,27 @@
-import {connect} from 'react-redux';
-import Home from './Home';
+import React from 'react';
+import styles from './Home.scss';
+//import {listData} from '../../data/dataStore';
+import PropTypes from 'prop-types';
 
-const mapStateToProps = state => ({
-  //title: state.app.title,
-  //subtitle: state.loginData.logIn,
-});
+//App components
+import LoginHeader from '../LoginHeader';
+import Container from '../Container';
+import Footer from '../Footer';
 
-export default connect(mapStateToProps)(Home);
+
+class Home extends React.Component {
+  render() {
+    return (
+      <div className='component'>
+        <LoginHeader />
+        <div className="homeContainer">
+          <Container />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+}
+
+
+export default Home;

@@ -11,11 +11,11 @@
 body {
   margin: 0;
   padding: 0;
-  //letter-spacing: 0.5px;
+  // letter-spacing: 0.1px;
   background-color: $background-color;
 
   font-family: $font-text;
-  font-size: ($base-size * 1.1);
+  font-size: $base-size;
 }
 
 :global(.container) {

@@ -2,28 +2,32 @@
 
 .container {
   width: 1170px;
-  border: 2px solid red;
-  display: flex;
   text-align: center;
   align-items: center;
-  justify-content: center;
 }
 
-.header {
+
+/* Header */
+.header-wrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
 }
 
+/* Logo */
 img {
-  width: 250px;
-  border: 1px solid red;
+  width: 200px;
 }
 
-.searchEngine {
 
+/* TopNav */
+.topNavWrapper {
+  //border: 1px solid red;
 }
 
-.cart {
-
+/* Centre section */
+.centreWrapper {
+  display: flex;
+  border: 1px solid green;
 }

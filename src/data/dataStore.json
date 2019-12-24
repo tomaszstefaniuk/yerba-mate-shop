@@ -3,46 +3,37 @@
     "logIn": "Zaloguj się",
     "newAcc": "Nowe konto"
   },
-  "booking": [
-    {
-      "id": 1,
-      "date": "2019-06-22",
-      "hour": "12:30",
-      "table": 3,
-      "repeat": false,
-      "duration": 1,
-      "ppl": 3,
-      "starters": []
-    },
-    {
-      "id": 2,
-      "date": "2019-06-22",
-      "hour": "15:30",
-      "table": 3,
-      "repeat": false,
-      "duration": 2,
-      "ppl": 3,
-      "starters": []
-    },
-    {
-      "id": 3,
-      "date": "2019-06-23",
-      "hour": "12:00",
-      "table": 1,
-      "repeat": false,
-      "duration": 3,
-      "ppl": 3,
-      "starters": []
-    },
-    {
-      "id": 4,
-      "date": "2019-06-23",
-      "hour": "15:30",
-      "table": 2,
-      "repeat": false,
-      "duration": 1,
-      "ppl": 3,
-      "starters": []
-    }
-  ]
+  "topNav": [
+    "Strona główna",
+    "Promocje",
+    "Dlaczego yerba mate",
+    "Jak pić yerba mate",
+    "O nas",
+    "Kontakt"
+  ],
+  "sideNav": [
+    "Yerba mate",
+    "Zestawy",
+    "Akcesoria",
+    "Bestsellery",
+    "Outlet"
+  ],
+  "footer": {
+    "header1": "Informacje",
+    "header2": "Pomoc",
+    "arr1": [
+      "Regulamin",
+      "Polityka prywatności",
+      "O firmie",
+      "Kontakt"
+    ],
+    "arr2": [
+      "Zwroty i reklamacje",
+      "Dostawa i płatność",
+      "Jak nas znaleźć"
+    ],
+    "sMedia1": "Bądź na bieżąco",
+    "footer": "Copyright © 2019 esemcode - Tomasz Stefaniuk"
+  }
+
 }

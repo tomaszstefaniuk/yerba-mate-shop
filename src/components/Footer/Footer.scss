@@ -1,0 +1,15 @@
+@import '../../styles/settings.scss';
+
+.footer-section1 {
+  display: flex;
+}
+
+.footer-section1__div {
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+}
