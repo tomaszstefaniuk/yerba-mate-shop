@@ -1,15 +1,71 @@
 @import '../../styles/settings.scss';
 
-.footer-section1 {
-  display: flex;
+footer {
+  background-color: #161B20;
+  margin-top: 50px;
+  color: #8E9198;
+  padding-top: 40px;
+  letter-spacing: .2px;
+  h3 {
+    color: #D2D3D6;
+    text-transform: uppercase;
+    font-size: 16px;
+    margin: 0;
+  }
 }
 
-.footer-section1__div {
-  ul {
-    list-style: none;
-    padding: 0;
+.footer-info {
+  height: 150px;
+  display: flex;
+  padding-left: 200px;
+  &__sec1 {
+    padding-right: 150px;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 6px;
+    }
+    li {
+      padding-bottom: 4px;
+
+    }
+    a {
+      text-decoration: none;
+      color: #8E9198;
+      font-size: 14px;
+      &:hover {
+        cursor: pointer;
+        color: #D2D3D6;
+      }
+    }
   }
-  a {
-    text-decoration: none;
+  &__sec2 {
+    color: #D2D3D6;
+    margin-left: 100px;
+    margin-top: 50px;
+    font-size: 19px;
+    font-weight: bold;
+    i {
+      padding-left: 15px;
+      font-size: 24px;
+      font-weight: 200;
+      color: #8E9198;
+      &:hover {
+        color: $color-light;
+        cursor: pointer;
+      }
+    }
   }
+}
+
+
+
+.footer-copyright {
+  background-color: #222930;
+  height: 30px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8E9198;
 }

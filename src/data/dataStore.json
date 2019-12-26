@@ -7,17 +7,20 @@
     "Strona główna",
     "Promocje",
     "Dlaczego yerba mate",
-    "Jak pić yerba mate",
+    "Jak pić yerbę",
     "O nas",
     "Kontakt"
   ],
-  "sideNav": [
-    "Yerba mate",
-    "Zestawy",
-    "Akcesoria",
-    "Bestsellery",
-    "Outlet"
-  ],
+  "sideNav": {
+      "header1": "Kategorie",
+      "mainList": [
+        "Yerba mate",
+        "Zestawy",
+        "Akcesoria",
+        "Bestsellery",
+        "Outlet"
+      ]
+    },
   "footer": {
     "header1": "Informacje",
     "header2": "Pomoc",
@@ -34,6 +37,12 @@
     ],
     "sMedia1": "Bądź na bieżąco",
     "footer": "Copyright © 2019 esemcode - Tomasz Stefaniuk"
+  },
+  "cart": {
+    "main": [
+      "Koszyk",
+      "(pusty)"
+    ]
   }
 
 }

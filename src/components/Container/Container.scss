@@ -6,28 +6,36 @@
   align-items: center;
 }
 
-
 /* Header */
 .header-wrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
+  /* Logo */
+  img {
+    width: 200px;
+  }
 }
-
-/* Logo */
-img {
-  width: 200px;
-}
-
 
 /* TopNav */
-.topNavWrapper {
-  //border: 1px solid red;
+.top-nav-wrapper {
+  margin-top: 40px;
 }
 
 /* Centre section */
-.centreWrapper {
+.centre-wrapper {
   display: flex;
-  border: 1px solid green;
+  margin-top: 40px;
+}
+
+/*Products section */
+.products-wrapper {
+  // border: 1px solid red;
+  padding-top: 5px;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: 20px;
 }

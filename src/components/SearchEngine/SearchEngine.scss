@@ -1,39 +1,45 @@
 @import '../../styles/settings.scss';
 
 .search-engine-wrapper {
-  padding-top: 50px;
+  padding-top: 45px;
 }
 
 .search-engine {
+  display: flex;
+  transition: $transition;
   &__input {
-    width: 320px;
-    // height: 45px;
+    width: 290px;
+    height: 45px;
     padding: 13px 60px 13px 13px;
     background: #f9fafc;
     color: #9c9b9b;
     border: 1px solid #d6d4d4;
     outline: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 14px;
     &:focus{
-      border: 1px solid #0097e6;
+      border: 1px solid $color-main-focus;
       border-right: none;
     }
   }
   &__button {
     width: 50px;
-    // height: 45px;
-    vertical-align: middle;
     color: $color-light;
     background: $color-main;
     border: none;
-    font-size: 17px;
+    font-size: 16px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     &:hover {
       color: $color-main-fill;
       cursor: pointer;
     }
   }
   &:focus-within{
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,151,230,0.6);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,151,230,0.6);
-    box-shadow: 0px 0px 5px 0px rgba(0,151,230,0.6);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(241,196,15,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(241,196,15,1);
+    box-shadow: 0px 0px 5px 0px rgba(241,196,15,1);
+    border-radius: 5px;
   }
 }

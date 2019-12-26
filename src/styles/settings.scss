@@ -1,10 +1,14 @@
 
 $color-light: #fff;
 $color-dark: #333;
-$color-main: #7da03e;
-$color-main-fill: #4a700b;
+$color-main: #6c902d;
+$color-main-fill: #5b801c;
+$color-main-focus: #f1c40f;
 $color-main2: #4a3d3e;
 $background-color: #f2f3f5;
+
+$radius: 5px;
+$transition: all 0.5s;
 
 
 //FOR EXAMPLE
@@ -13,7 +17,4 @@ $background-color: #f2f3f5;
 // $color-warning: #e1644e;
 
 $font-text: 'Poppins', sans-serif;
-
-$radius: 5px;
 $base-size: 12px;
-$transition: all 0.5s;

@@ -9,11 +9,11 @@ class SideNav extends React.Component {
     return(
       <aside className="sideNav">
 				<ul>
-					<li><a href="#"><p>{dataStore.sideNav[0]}</p></a></li>
-					<li><a href="#"><p>{dataStore.sideNav[1]}</p></a></li>
-					<li><a href="#"><p>{dataStore.sideNav[2]}</p></a></li>
-					<li><a href="#"><p>{dataStore.sideNav[3]}</p></a></li>
-					<li><a href="#"><p>{dataStore.sideNav[4]}</p></a></li>
+					<li><a href="#"><p>{dataStore.sideNav.mainList[0]}</p></a><i class="fas fa-plus"></i></li>
+					<li><a href="#"><p>{dataStore.sideNav.mainList[1]}</p></a><i class="fas fa-plus"></i></li>
+					<li><a href="#"><p>{dataStore.sideNav.mainList[2]}</p></a><i class="fas fa-plus"></i></li>
+					<li><a href="#"><p>{dataStore.sideNav.mainList[3]}</p></a><i class="fas fa-plus"></i></li>
+					<li><a href="#"><p>{dataStore.sideNav.mainList[4]}</p></a><i class="fas fa-plus"></i></li>
 				</ul>
 			</aside>
     );

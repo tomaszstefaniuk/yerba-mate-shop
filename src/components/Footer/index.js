@@ -9,8 +9,8 @@ class Footer extends React.Component {
     return(
       <footer>
 
-        <div className='footer-section1'>
-          <div className='footer-section1__div'>
+        <div className='footer-info'>
+          <div className='footer-info__sec1'>
             <h3>{dataStore.footer.header1}</h3>
             <ul>
               <li><a href="#">{dataStore.footer.arr1[0]}</a></li>
@@ -20,7 +20,7 @@ class Footer extends React.Component {
             </ul>
           </div>
 
-          <div className='footer-section1__div'>
+          <div className='footer-info__sec1'>
             <h3>{dataStore.footer.header2}</h3>
             <ul>
               <li><a href="#">{dataStore.footer.arr2[0]}</a></li>
@@ -29,12 +29,15 @@ class Footer extends React.Component {
             </ul>
           </div>
 
-          <div>
+          <div className='footer-info__sec2'>
             {dataStore.footer.sMedia1}
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-google-plus-g"></i>
           </div>
         </div>
 
-        <div>
+        <div className='footer-copyright'>
           {dataStore.footer.footer}
         </div>
 

@@ -1,0 +1,32 @@
+@import '../../styles/settings.scss';
+
+.cart-wrapper {
+  padding-top: 45px;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  width: 200px;
+  height: 45px;
+  background: $color-main;
+  color: $color-light;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  .fa-shopping-cart {
+    padding-right: 5px;
+  }
+  .cart-main0 {
+    padding-right: 3px;
+  }
+  .cart-main1 {
+    padding-right: 45px;
+  }
+  .fa-sort {
+    color: $color-main-fill;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+}
