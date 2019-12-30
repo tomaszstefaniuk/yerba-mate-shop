@@ -11,7 +11,7 @@ class Product extends React.Component {
         <p className='product__desc'>Amanda Despalada 0,5kg</p>
         <div class='product__btn-div'>
           <p class='product__btn-div__price'>17,49 zł</p>
-          <button type="button">Dodaj do <br /> koszyka</button>
+          <button type="button">Dodaj do<br />koszyka</button>
         </div>
       </div>
     );

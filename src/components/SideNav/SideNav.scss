@@ -1,7 +1,7 @@
 @import '../../styles/settings.scss';
 
 .sideNav {
-  height: 700px;
+  // height: 700px;
   font-size: 14px;
   font-weight: bold;
   display: flex;
@@ -25,10 +25,10 @@
     margin-bottom: 5px;
     padding-left: 30px;
     i {
-      color: #b1b2b4;
+      color: $color-dark-gray;
       padding-top: 16px;
       width: 70px;
-      background-color: #e4e5e7;
+      background-color: $color-light-gray;
       border-radius: $radius;
     }
     &:hover {

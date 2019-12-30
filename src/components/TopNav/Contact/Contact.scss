@@ -1,0 +1,53 @@
+@import '../../../styles/settings.scss';
+
+.contact {
+  background-color: #e4e5e7;
+  margin: 5px 50px 0 50px;
+  border-radius: $radius;
+  color: $color-dark;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 35px;
+  h1 {
+    text-decoration: underline;
+    text-decoration-color: $color-success;
+  }
+
+  form {
+    margin-top: 20px;
+    input {
+        padding: 10px;
+        width: 500px;
+        border-radius: $radius;
+        background: #f9fafc;
+        color: $color-dark;
+        border: 1px solid #d6d4d4;
+        margin-bottom: 10px;
+      &:focus{
+        border: 1px solid $color-main-focus;
+        outline: none;
+      }
+    }
+    input[name="message"] {
+        height: 150px;
+        padding-bottom: 123px;
+    }
+    button {
+        border: none;
+        border-radius: $radius;
+        color: $color-light;
+        background: $color-main;
+        margin-top: 30px;
+        height: 45px;
+        width: 150px;
+        font-size: 14px;
+        letter-spacing: .8px;
+        &:hover {
+          cursor: pointer;
+          background-color: $color-main-fill;
+        }
+    }
+  }
+}

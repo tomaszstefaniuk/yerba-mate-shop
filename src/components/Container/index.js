@@ -1,13 +1,25 @@
 import React from 'react';
 import styles from './Container.scss';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 //App components
 import SearchEngine from '../SearchEngine';
 import Cart from '../Cart';
 import TopNav from '../TopNav';
 import SideNav from '../SideNav';
-import Product from '../Product';
-import Paging from '../Paging';
+import Products from '../Products';
+import Promotion from '../TopNav/Promotion';
+import WhyYerba from '../TopNav/WhyYerba';
+import HowToUseYerba from '../TopNav/HowToUseYerba';
+import AboutUs from '../TopNav/AboutUs';
+import Contact from '../TopNav/Contact';
+import Rules from '../Footer/Rules';
+import Policy from '../Footer/Policy';
+import Reclamation from '../Footer/Reclamation';
+import Delivery from '../Footer/Delivery';
+import FindUs from '../Footer/FindUs';
+
 
 
 class Container extends React.Component {
@@ -17,7 +29,11 @@ class Container extends React.Component {
       <div className='container'>
 
         <div className='header-wrapper'>
-          <img src="https://i.imgur.com/5iFdjdL.jpg" alt="yerba-mate-shop"/>
+          <NavLink exact to="/">
+            <img src="https://i.imgur.com/5iFdjdL.jpg"
+              alt="yerba-mate-shop"
+              title="Przejdź na stronę główną sklepu" />
+          </NavLink>
           <SearchEngine />
           <Cart />
         </div>
@@ -28,23 +44,24 @@ class Container extends React.Component {
 
         <div className='centre-wrapper'>
           <SideNav />
-          <div className='products-wrapper'>
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-
-            <Paging />
+          <div className='main-section-wrapper'>
+            <Switch>
+              {/*TopNav*/}
+              <Route exact path="/" component={Products} />
+              <Route path="/promocje" component={Promotion} />
+              <Route path="/dlaczego-yerba-mate" component={WhyYerba} />
+              <Route path="/jak-pic-yerbe" component={HowToUseYerba} />
+              <Route path="/o-nas" component={AboutUs} />
+              <Route path="/kontakt" component={Contact} />
+              {/*Footer*/}
+              <Route path="/regulamin" component={Rules} />
+              <Route path="/polityka-prywatnosci" component={Policy} />
+              <Route path="/o-firmie" component={AboutUs} />
+              <Route path="/kontakt" component={Contact} />
+              <Route path="/zwroty-i-reklamacje" component={Reclamation} />
+              <Route path="/dostawa-i-platnosc" component={Delivery} />
+              <Route path="/jak-nas-znalezc" component={FindUs} />
+            </Switch>
           </div>
         </div>
 

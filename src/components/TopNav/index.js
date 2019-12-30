@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 import dataStore from '../../data/dataStore.json';
 import styles from './TopNav.scss';
 
@@ -11,12 +11,12 @@ class TopNav extends React.Component {
     return(
       <nav className="topNav">
   			<ul>
-  				<li><a href="#">{dataStore.topNav[0]}</a></li>
-  				<li><a href="#">{dataStore.topNav[1]}</a></li>
-  				<li><a href="#">{dataStore.topNav[2]}</a></li>
-  				<li><a href="#">{dataStore.topNav[3]}</a></li>
-  				<li><a href="#">{dataStore.topNav[4]}</a></li>
-  				<li><a href="#">{dataStore.topNav[5]}</a></li>
+  				<li><NavLink exact to="/">{dataStore.topNav.nav[0]}</NavLink></li>
+  				<li><NavLink to="/promocje">{dataStore.topNav.nav[1]}</NavLink></li>
+  				<li><NavLink to="/dlaczego-yerba-mate">{dataStore.topNav.nav[2]}</NavLink></li>
+  				<li><NavLink to="/jak-pic-yerbe">{dataStore.topNav.nav[3]}</NavLink></li>
+  				<li><NavLink to="/o-nas">{dataStore.topNav.nav[4]}</NavLink></li>
+  				<li><NavLink to="/kontakt">{dataStore.topNav.nav[5]}</NavLink></li>
   			</ul>
   		</nav>
     );

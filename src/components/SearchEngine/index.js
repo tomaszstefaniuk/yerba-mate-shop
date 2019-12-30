@@ -7,8 +7,17 @@ class SearchEngine extends React.Component {
     return (
       <div className='search-engine-wrapper'>
         <div className='search-engine'>
-          <input type='text' placeholder='Szukaj' className='search-engine__input' />
-          <button type='submit' className='search-engine__button'><i className="fas fa-search"></i></button>
+          <input
+            type='text'
+            placeholder='Szukaj'
+            className='search-engine__input'
+            title='Co chcesz wyszukać' />
+          <button
+            type='submit'
+            className='search-engine__button'
+            title='Wyszukaj'>
+              <i className="fas fa-search"></i>
+          </button>
         </div>
       </div>
     );

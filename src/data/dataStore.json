@@ -3,24 +3,64 @@
     "logIn": "Zaloguj się",
     "newAcc": "Nowe konto"
   },
-  "topNav": [
-    "Strona główna",
-    "Promocje",
-    "Dlaczego yerba mate",
-    "Jak pić yerbę",
-    "O nas",
-    "Kontakt"
-  ],
-  "sideNav": {
-      "header1": "Kategorie",
-      "mainList": [
-        "Yerba mate",
-        "Zestawy",
-        "Akcesoria",
-        "Bestsellery",
-        "Outlet"
+  "topNav": {
+    "nav": [
+      "Strona główna",
+      "Promocje",
+      "Dlaczego yerba mate",
+      "Jak pić yerbę",
+      "O nas",
+      "Kontakt"
+    ],
+    "whyYerba": {
+      "h1": "9 powodów, dla których warto pić yerbę",
+      "h2": [
+        "1. Yerba mate pobudza na długo",
+        "2. Pobudza, ale i uspokaja",
+        "3. Yerba podnosi odporność na zmęczenie i sprawność intelektualną",
+        "4. Yerba to zdrowie w płynie",
+        "5. Yerba pomaga w odchudzaniu",
+        "6. Yerba zadba o Twoje serce",
+        "7. Yerba mate pomaga w kłopotach żołądkowych",
+        "8. Yerba poprawia funkcjonowanie nerek",
+        "9. Yerba mata redukuje ryzyko nowotworów"
+      ],
+      "p": [
+        "Yerba nie działa gwałtownie. Efekt pobudzenia pojawia się stopniowo, a same efekty odczuwamy nawet przez kilka godzin. Jednocześnie unikamy rozdrażnienia związanego z nagłym wzrostem poziomu kofeiny. Pijąc yerbę nie odczujesz tak dotkliwie, jak w przypadku kawy momentu, gdy napój przestaje działać, a Ty wpadasz w kofeinowy głód.",
+        "Co nam po pobudzeniu skoro będziemy rozdrażnieni i niezdolni do koncentracji? Na szczęście yerba mate oprócz pobudzającej kofeiny zawiera również działające uspokajająco minerały takie jak magnez i potas. Ponadto sam proces parzenia na wiele osób działa kojąco, dając okazję, by choć na chwilę się zatrzymać.",
+        "Zawarte w naparze z ostrokrzewu paragwajskiego witaminy i związki mineralne podnoszą odporność na zmęczenie zarówno fizyczne, jak i psychiczne. Efekt ożywienia towarzyszący jej piciu pobudza ponadto kreatywność, tak ważną w wielu dziedzinach.",
+        "Napar yerba mate zawiera ponad 20 witamin i minerałów. Poczynając od magnezu i potasu, korzystnie wspomagającego nasz układ nerwowy wapnia, na witaminie C kończąc. Ponadto zawiera polifenole i blisko 200 innych, uważanych za korzystne dla zdrowia, związków chemicznych.",
+        "Yerba mate zaspokaja głód. Ponadto wspomaga spalanie tłuszczu. Te dwie cechy czynią z niej doskonały środek odchudzający. Zresztą nie bez powodu stała się ona składnikiem wielu preparatów odchudzających.\\n\\n <br/> Z drugiej strony, osoby cierpiące na niedowagę powinny ograniczyć, choć okresowo jej spożycie. Podobnie jak zielona i czerwona herbata, yerba może stanowić jedną z przeszkód na drodze do zyskania kilku kilogramów.",
+        "Yerba mate czyni nas również zdrowszymi. Wszystko za sprawą m.in. polifenoli zwiększających wydajność naszego układu krążenia. W rezultacie napar ten redukuje ryzyko zawału. Nie bez powodu marka Rosamonte jest rekomendowana przez Argentyńskie Towarzystwo Kardiologiczne.",
+        "Yerba mate reguluje przemianę materii, zapobiega biegunom i zaparciom, leczy niestrawność. Co więcej – badania wykazały, że napar z ostrokrzewu potrafi leczyć nawet zatrucia bakteriami coli. Jeszcze lepsze działanie w kwestiach okołogastrycznych odniesiemy sięgając po yerby wzbogacone mieszanką ziół. Przykładem może tu być Amanda Hierbas zawierająca w sobie oprócz ostrokrzewu również mięte, cedron i kwiat lipy, albo zawierającą miętę, rumianek i kolendrę Cachamate Hierbas.",
+        "Ze względu na swoje moczopędne właściwości, yerba mate wspomaga funkcjonowanie nerek, a jej regularne picie zapobiega m.in. tworzeniu się kamieni nerkowych.",
+        "Na dzień dzisiejszy wiadomo, że zawarte w yerbie polifenole redukują ryzyko chorób nowotworowych."
       ]
     },
+    "promotion": {
+      "h1": "Kupuj więcej za mniej!",
+      "h2": [
+        "Yerba mate - GRATIS",
+        "Wysyłka - GRATIS",
+        "Akcesoria - GRATIS"
+      ],
+      "p": [
+        "Losowo wybrana yerba mate 1kg przy zamówieniu powyżej 200zł",
+        "przy zamówieniu powyżej 100zł",
+        "Losowo wybrane akcesoria do każdego zamówienia powyżej 50zł"
+      ]
+    }
+  },
+  "sideNav": {
+    "header1": "Kategorie",
+    "mainList": [
+      "Yerba mate",
+      "Zestawy",
+      "Akcesoria",
+      "Bestsellery",
+      "Outlet"
+    ]
+  },
   "footer": {
     "header1": "Informacje",
     "header2": "Pomoc",
@@ -44,5 +84,4 @@
       "(pusty)"
     ]
   }
-
 }
