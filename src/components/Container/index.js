@@ -16,7 +16,7 @@ import AboutUs from '../TopNav/AboutUs';
 import Contact from '../TopNav/Contact';
 import Rules from '../Footer/Rules';
 import Policy from '../Footer/Policy';
-import Reclamation from '../Footer/Reclamation';
+import Returns from '../Footer/Returns';
 import Delivery from '../Footer/Delivery';
 import FindUs from '../Footer/FindUs';
 
@@ -58,7 +58,7 @@ class Container extends React.Component {
               <Route path="/polityka-prywatnosci" component={Policy} />
               <Route path="/o-firmie" component={AboutUs} />
               <Route path="/kontakt" component={Contact} />
-              <Route path="/zwroty-i-reklamacje" component={Reclamation} />
+              <Route path="/zwroty" component={Returns} />
               <Route path="/dostawa-i-platnosc" component={Delivery} />
               <Route path="/jak-nas-znalezc" component={FindUs} />
             </Switch>

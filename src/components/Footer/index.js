@@ -23,7 +23,7 @@ class Footer extends React.Component {
           <div className='footer-info__sec1'>
             <h3>{dataStore.footer.header2}</h3>
             <ul>
-              <li><NavLink to="/zwroty-i-reklamacje">{dataStore.footer.arr2[0]}</NavLink></li>
+              <li><NavLink to="/zwroty">{dataStore.footer.arr2[0]}</NavLink></li>
               <li><NavLink to="/dostawa-i-platnosc">{dataStore.footer.arr2[1]}</NavLink></li>
               <li><NavLink to="/jak-nas-znalezc">{dataStore.footer.arr2[2]}</NavLink></li>
             </ul>
