@@ -4,6 +4,11 @@ import styles from './WhyYerba.scss';
 
 
 class WhyYerba extends React.Component {
+
+  componentDidMount() {
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+  }
+
   render() {
     const items = [];
 

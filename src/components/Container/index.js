@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Container.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { uid } from 'react-uid';
 
 //App components
 import SearchEngine from '../SearchEngine';
@@ -20,10 +21,33 @@ import Returns from '../Footer/Returns';
 import Delivery from '../Footer/Delivery';
 import FindUs from '../Footer/FindUs';
 
+import data from 'data/dataStore.json';
+
 
 
 class Container extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { mainListRoutes: this.getMainListRoutes() };
+  }
+
+  getMainListRoutes = () => {
+    let mainListRoutes = [];
+    console.log(data);
+    {data.sideNav.mainList.forEach(route => {
+      if(route.subItems) {
+        route.subItems.forEach(subRoute => {
+          mainListRoutes.push(subRoute);
+        });
+      } else {
+        mainListRoutes.push(route);
+      }
+    })}
+    return mainListRoutes;
+  }
+
   render() {
+    console.log(this.state.mainListRoutes)
 
     return (
       <div className='container'>
@@ -48,6 +72,15 @@ class Container extends React.Component {
             <Switch>
               {/*TopNav*/}
               <Route exact path="/" component={Products} />
+
+              {this.state.mainListRoutes.map(route => (
+                <Route
+                  key={uid(route)}
+                  path={route.path}
+                  render={(props) => <Promotion {...props} route="lalal" />}
+                />
+              ))}
+
               <Route path="/promocje" component={Promotion} />
               <Route path="/dlaczego-yerba-mate" component={WhyYerba} />
               <Route path="/jak-pic-yerbe" component={HowToUseYerba} />
@@ -55,12 +88,14 @@ class Container extends React.Component {
               <Route path="/kontakt" component={Contact} />
               {/*Footer*/}
               <Route path="/regulamin" component={Rules} />
-              <Route path="/polityka-prywatnosci" component={Policy} />
+              <Route path="/polityka-prywatnosci" component={Policy} onUpdate={() => window.scrollTo(0, 0)} />
               <Route path="/o-firmie" component={AboutUs} />
               <Route path="/kontakt" component={Contact} />
               <Route path="/zwroty" component={Returns} />
               <Route path="/dostawa-i-platnosc" component={Delivery} />
               <Route path="/jak-nas-znalezc" component={FindUs} />
+              <Route path="/" component={Products} />
+
             </Switch>
           </div>
         </div>

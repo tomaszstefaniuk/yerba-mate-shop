@@ -8,6 +8,7 @@ import Paging from '../Paging';
 
 class Test extends React.Component {
   render() {
+    console.log(this.props.route)
     return (
       <div className='products-wrapper2'>
         <Product />

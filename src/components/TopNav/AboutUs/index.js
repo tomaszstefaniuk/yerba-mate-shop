@@ -1,19 +1,28 @@
 import React from 'react';
 import styles from './AboutUs.scss';
+import __html from 'data/TopNav/aboutUs';
+
 
 class AboutUs extends React.Component {
+
+  componentDidMount() {
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+  }
+
   render() {
+    // return <div dangerouslySetInnerHTML={{ __html }} />;
     return (
-      <div className='about-us'>
+      <div class='about-us'>
         <h1>Yerba-Mate-Shop</h1>
         <p>Jesteśmy firmą sprzedającą Yerba Mate i akcesoria do niej z ponad 5
           letnim doświadczeniem w ich sprzedaży. Dzięki długoletniemu
           doświadczeniu zawsze możecie Państwo liczyć na fachową pomoc i radę.</p>
         <h2>Naszym mottem działania jest:</h2>
         <p><pre><span>☺</span> 100% satysfakcji klienta.</pre>
-        <pre><span>✂</span> Najwyższa jakość towaru po jak najniższej cenie.</pre>
-        <pre><span>✈</span> Możliwie najkrótszy czas realizacji zamówienia.</pre>
-        <pre><span>♔</span> Program rabatowy dla stałych (zarejestrowanych) klientów.</pre></p>
+          <pre><span>✂</span> Najwyższa jakość towaru po jak najniższej cenie.</pre>
+          <pre><span>✈</span> Możliwie najkrótszy czas realizacji zamówienia.</pre>
+          <pre><span>♔</span> Program rabatowy dla stałych (zarejestrowanych) klientów.</pre>
+        </p>
         <h2>Sprzedajemy tylko oryginalne produkty zakupione od oficjalnych
           przedstawicieli.</h2>
         <p>W naszej ofercie znajduje się Yerba Mate jak i akcesoria użytkowe.

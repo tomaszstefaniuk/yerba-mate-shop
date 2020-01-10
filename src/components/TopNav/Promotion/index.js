@@ -4,6 +4,11 @@ import dataStore from '../../../data/dataStore.json';
 
 
 class Promotion extends React.Component {
+
+  componentDidMount() {
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+  }
+
   render() {
     const items = [];
 

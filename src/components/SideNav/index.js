@@ -1,24 +1,58 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { withRouter } from 'react-router';
 import styles from './SideNav.scss';
 import dataStore from '../../data/dataStore.json';
+import { uid } from 'react-uid';
 
 
-class SideNav extends React.Component {
-  render() {
-    return(
-      <aside className="sideNav">
-				<ul>
-					<li><a href="#"><p>{dataStore.sideNav.mainList[0]}</p></a><i class="fas fa-plus"></i></li>
-					<li><a href="#"><p>{dataStore.sideNav.mainList[1]}</p></a><i class="fas fa-plus"></i></li>
-					<li><a href="#"><p>{dataStore.sideNav.mainList[2]}</p></a><i class="fas fa-plus"></i></li>
-					<li><a href="#"><p>{dataStore.sideNav.mainList[3]}</p></a><i class="fas fa-plus"></i></li>
-					<li><a href="#"><p>{dataStore.sideNav.mainList[4]}</p></a><i class="fas fa-plus"></i></li>
-				</ul>
-			</aside>
-    );
+const SideNav = ({ history }) => {
+  return(
+    <aside className="sideNav">
+			<ul>
+        {dataStore.sideNav.mainList.map(item => (
+          <SideNavItem item={item} onPathChange={(path) => history.push(path)} />
+        ))}
+			</ul>
+		</aside>
+  );
+}
+
+const SideNavItem = ({ item, onPathChange }) => {
+  const [isOpen, setOpen] = useState(false);
+
+  if(!item.subItems || (item.subItems && !Array.isArray(item.subItems))) {
+    return (
+      <li onClick={() => onPathChange(item.path)}>
+        <a href="#">
+          <p>{item.label}</p>
+        </a>
+        <i class="fas fa-plus"></i>
+      </li>
+    )
   }
+  return (
+    <li onClick={() => setOpen(!isOpen)}>
+      <a href="#">
+        <p>{item.label}</p>
+      </a>
+      <i class="fas fa-plus"></i>
+      <div>
+        <ul>
+          {isOpen && item.subItems.map(subItem => (
+            <li
+              key={uid(subItem)}
+              onClick={() => onPathChange(`${item.path}${subItem.path}`)}>
+              <a href="#">
+                <p>{subItem.label}</p>
+              </a>
+              <i class="fas fa-plus"></i>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </li>
+  );
 }
 
 
-export default SideNav;
+export default withRouter(SideNav);

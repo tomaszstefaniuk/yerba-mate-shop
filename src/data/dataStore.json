@@ -54,11 +54,27 @@
   "sideNav": {
     "header1": "Kategorie",
     "mainList": [
-      "Yerba mate",
-      "Zestawy",
-      "Akcesoria",
-      "Bestsellery",
-      "Outlet"
+      { "label": "Yerba mate", "path": "/yerba-mate", "subItems": [
+        { "label": "Klasyczne", "path": "/klasyczne" },
+        { "label": "Ziołowe", "path": "/ziolowe" },
+        { "label": "Smakowe", "path": "/smakowe" },
+        { "label": "Organiczne", "path": "/organiczne" }
+      ]},
+      { "label": "Zestawy", "path": "/zestawy", "subItems": [
+        { "label": "Startowe", "path": "/startowe" },
+        { "label": "Dla zaawansowanych", "path": "/dla-zaawansowanych" }
+      ]},
+      { "label": "Akcesoria", "path": "/akcesoria", "subItems": [
+        { "label": "Bombille", "path": "/bombille" },
+        { "label": "Matera", "path": "/matera" },
+        { "label": "Inne", "path": "/inne" }
+      ]},
+      { "label": "Bestsellery", "path": "/bestsellery", "subItems": [
+        { "label": "Wszystkie kategorie", "path": "/wszystkie-kategorie" }
+      ]},
+      { "label": "Outlet", "path": "/outlet", "subItems": [
+        { "label": "Wszystkie kategorie", "path": "/wszystkie-kategorie" }
+      ]}
     ]
   },
   "footer": {

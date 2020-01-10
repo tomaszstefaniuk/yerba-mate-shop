@@ -2,6 +2,11 @@ import React from 'react';
 import styles from './Contact.scss';
 
 class Contact extends React.Component {
+
+  componentDidMount() {
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+  }
+
   render() {
     return (
       <div className='contact'>
