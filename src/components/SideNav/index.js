@@ -7,8 +7,8 @@ import { uid } from 'react-uid';
 
 const SideNav = ({ history }) => {
   return(
-    <aside className="sideNav">
-			<ul>
+    <aside className='sideNav'>
+			<ul className='sideNav__mainlist-ul'>
         {dataStore.sideNav.mainList.map(item => (
           <SideNavItem item={item} onPathChange={(path) => history.push(path)} />
         ))}
@@ -22,34 +22,37 @@ const SideNavItem = ({ item, onPathChange }) => {
 
   if(!item.subItems || (item.subItems && !Array.isArray(item.subItems))) {
     return (
-      <li onClick={() => onPathChange(item.path)}>
-        <a href="#">
+      <li onClick={() => onPathChange(item.path)} className='sideNav__mainlist-li'>
+        <a href="#" className='sideNav__mainlist-a'>
           <p>{item.label}</p>
         </a>
-        <i class="fas fa-plus"></i>
+        <i className="fas fa-plus sideNav__mainlist-i"></i>
       </li>
     )
   }
   return (
-    <li onClick={() => setOpen(!isOpen)}>
-      <a href="#">
-        <p>{item.label}</p>
-      </a>
-      <i class="fas fa-plus"></i>
-      <div>
-        <ul>
-          {isOpen && item.subItems.map(subItem => (
-            <li
-              key={uid(subItem)}
-              onClick={() => onPathChange(`${item.path}${subItem.path}`)}>
-              <a href="#">
-                <p>{subItem.label}</p>
-              </a>
-              <i class="fas fa-plus"></i>
-            </li>
-          ))}
-        </ul>
+    <li onClick={() => setOpen(!isOpen)} className={isOpen?'sideNav-mainlistOpen-li':'sideNav__mainlist-li'}>
+      <div className='sideNav__wrapper'>
+        <a href="#" className='sideNav__mainlist-a'>
+          <p className={isOpen?'sideNav-mainlistOpen-p':'sideNav__mainlist-p'}>{item.label}</p>
+        </a>
+        {isOpen &&
+          <div className='sideNav-subList'>
+            <ul className='sideNav-subList__ul'>
+              {isOpen && item.subItems.map(subItem => (
+                <li
+                  key={uid(subItem)}
+                  className='sideNav-subList__li'
+                  onClick={() => onPathChange(`${item.path}${subItem.path}`)}>
+                  <a href="#" className='sideNav-subList__a'>
+                    <p className='sideNav-subList__p'>› {subItem.label}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>}
       </div>
+      <i className={'fas sideNav__mainlist-i' + (isOpen?' sideNav-mainlistOpen-i fa-minus':' fa-plus')}></i>
     </li>
   );
 }

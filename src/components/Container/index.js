@@ -20,9 +20,7 @@ import Policy from '../Footer/Policy';
 import Returns from '../Footer/Returns';
 import Delivery from '../Footer/Delivery';
 import FindUs from '../Footer/FindUs';
-
 import data from 'data/dataStore.json';
-
 
 
 class Container extends React.Component {
@@ -47,8 +45,6 @@ class Container extends React.Component {
   }
 
   render() {
-    console.log(this.state.mainListRoutes)
-
     return (
       <div className='container'>
 

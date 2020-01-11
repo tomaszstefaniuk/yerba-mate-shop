@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './Home.scss';
 //import {listData} from '../../data/dataStore';
 import PropTypes from 'prop-types';
-
-//App components
 import LoginHeader from '../LoginHeader';
 import Container from '../Container';
 import Footer from '../Footer';
