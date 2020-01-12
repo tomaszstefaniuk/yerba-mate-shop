@@ -10,13 +10,15 @@ class LoginHeader extends React.Component {
     super();
 
     this.state = {
-      showModal: false
+      showModal: false,
+      showLogin: false
     };
   }
 
-  openModal = () => {
+  openModal = (showLogin) => {
     this.setState({
-      showModal: true
+      showModal: true,
+      showLogin
     });
   }
 
@@ -29,17 +31,23 @@ class LoginHeader extends React.Component {
   render() {
     return (
       <div className='login-wrapper'>
+        <div className={this.state.showModal?'modal-bcg':''} onClick={this.closeModal}></div>
         <div className='login-wrapper__div'>
-          <a href="">{dataStore.login.logIn}</a>
+          <a href="" onClick={ (e) => {e.preventDefault(); this.openModal(true);} }>
+            {dataStore.login.logIn}
+          </a>
         </div>
         <div className='login-wrapper__div'>
-          <a href="" onClick={ (e) => {e.preventDefault(); this.openModal();} }>
+          <a href="" onClick={ (e) => {e.preventDefault(); this.openModal(false);} }>
             {dataStore.login.newAcc}
           </a>
         </div>
         {this.state.showModal &&
           <Portal>
-            <Modal />
+            <Modal
+              closeModal={this.closeModal}
+              showLogin={this.state.showLogin}
+            />
           </Portal>}
       </div>
     );
