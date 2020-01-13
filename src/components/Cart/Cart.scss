@@ -2,6 +2,7 @@
 
 .cart-wrapper {
   padding-top: 45px;
+  position: relative;
 }
 
 .cart {
@@ -28,5 +29,8 @@
     color: $color-main-fill;
     font-size: 16px;
     margin-bottom: 5px;
+  }
+  .fa-sort-up {
+    margin-top: 10px;
   }
 }

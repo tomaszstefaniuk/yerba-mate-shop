@@ -22,8 +22,18 @@ class Modal extends React.Component {
       <div className='modal-wrapper'>
         <span className='modal-closeX' onClick={this.props.closeModal}>×</span>
         <div className='modal-header'>
-          <h1 onClick={() => {this.showLoginHandler(true)}}>Zaloguj się</h1>
-          <h1 onClick={() => {this.showLoginHandler(false)}}>Zarejestruj się</h1>
+          <h1
+            onClick={() => {this.showLoginHandler(true)}}
+            className={this.state.showLogin?'modal-header__h1':''}
+          >
+            Zaloguj się
+          </h1>
+          <h1
+            onClick={() => {this.showLoginHandler(false)}}
+            className={!this.state.showLogin?'modal-header__h1':''}
+          >
+            Zarejestruj się
+          </h1>
         </div>
         {!this.state.showLogin?
           <div className='modal-newAcc-form'>

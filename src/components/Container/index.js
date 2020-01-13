@@ -31,7 +31,6 @@ class Container extends React.Component {
 
   getMainListRoutes = () => {
     let mainListRoutes = [];
-    console.log(data);
     {data.sideNav.mainList.forEach(route => {
       if(route.subItems) {
         route.subItems.forEach(subRoute => {
@@ -47,7 +46,6 @@ class Container extends React.Component {
   render() {
     return (
       <div className='container'>
-
         <div className='header-wrapper'>
           <NavLink exact to="/">
             <img src="https://i.imgur.com/5iFdjdL.jpg"
@@ -57,18 +55,15 @@ class Container extends React.Component {
           <SearchEngine />
           <Cart />
         </div>
-
         <div className='top-nav-wrapper'>
           <TopNav />
         </div>
-
         <div className='centre-wrapper'>
           <SideNav />
           <div className='main-section-wrapper'>
             <Switch>
               {/*TopNav*/}
               <Route exact path="/" component={Products} />
-
               {this.state.mainListRoutes.map(route => (
                 <Route
                   key={uid(route)}
@@ -95,7 +90,6 @@ class Container extends React.Component {
             </Switch>
           </div>
         </div>
-
       </div>
     );
   }
