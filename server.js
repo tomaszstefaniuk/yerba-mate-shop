@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 
 /*
-1. Start mongod service using "mongod" command in Git Bash 
+1. Start mongod service using "mongod" command in Git Bash
 2. Start node.js server using "nodemon server.js" command
 */
 
@@ -22,7 +22,7 @@ const app = express();
 const api = express.Router();
 const productsApi = require("./api/products");
 
-const PORT = process.env.PORT;
+const PORT = process.env.host_PORT;
 
 api.get("/product", productsApi.get);
 api.put("/product", productsApi.put);
