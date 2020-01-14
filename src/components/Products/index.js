@@ -5,6 +5,11 @@ import Paging from '../Paging';
 
 
 class ProductsWrapper extends React.Component {
+  componentDidMount() {
+    // fetch('http://localhost:5000/api/product')
+    // .then(products => /*zrob cos z produktami*/);
+  }
+
   render() {
     return (
       <div className='products-wrapper'>

@@ -68,7 +68,7 @@ class Container extends React.Component {
                 <Route
                   key={uid(route)}
                   path={route.path}
-                  render={(props) => <Promotion {...props} route="lalal" />}
+                  render={(props) => <Products {...props} route="lalal" />}
                 />
               ))}
 
