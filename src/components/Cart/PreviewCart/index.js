@@ -10,12 +10,25 @@ class PreviewCart extends React.Component {
         onMouseEnter={() => this.props.showPreviewCart(true)}
         onMouseLeave={() => this.props.showPreviewCart(false)}
       >
-        <div className='preview-cart-wrapper'>
-          <div>(Dodane produkty)</div>
-          <p>Produkty:</p>
-          <p>Dostawa:</p>
-          <p>Do zapłaty:</p>
-          <button>Zamów</button>
+        <div className='preview-cart'>
+          <div>(Brak produktów w koszyku)</div>
+          <div className='preview-cart__line'></div>
+          <div className='preview-cart__total'>
+            <div className='preview-cart__total__sub-div'>
+              <p>Produkty:</p>
+              <p>0zł</p>
+            </div>
+            <div className='preview-cart__total__sub-div'>
+              <p>Dostawa:</p>
+              <p>0zł</p>
+            </div>
+            <div className='preview-cart__total__sub-div'>
+              <p><b>Do zapłaty:</b></p>
+              <p><b>0zł</b></p>
+            </div>
+          </div>
+          <div className='preview-cart__line'></div>
+          <button className='preview-cart__order-btn'>ZAMÓW</button>
         </div>
       </div>
     );

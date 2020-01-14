@@ -5,11 +5,12 @@ export default `
       letnim doświadczeniem w ich sprzedaży. Dzięki długoletniemu
       doświadczeniu zawsze możecie Państwo liczyć na fachową pomoc i radę.</p>
     <h2>Naszym mottem działania jest:</h2>
-    <p><pre><span>☺</span> 100% satysfakcji klienta.</pre>
+    <div>
+      <pre><span>☺</span> 100% satysfakcji klienta.</pre>
       <pre><span>✂</span> Najwyższa jakość towaru po jak najniższej cenie.</pre>
       <pre><span>✈</span> Możliwie najkrótszy czas realizacji zamówienia.</pre>
       <pre><span>♔</span> Program rabatowy dla stałych (zarejestrowanych) klientów.</pre>
-    </p>
+    </div>
     <h2>Sprzedajemy tylko oryginalne produkty zakupione od oficjalnych
       przedstawicieli.</h2>
     <p>W naszej ofercie znajduje się Yerba Mate jak i akcesoria użytkowe.

@@ -15,7 +15,7 @@
     text-decoration: underline;
     text-decoration-color: $color-success;
   }
-  h2, p {
+  h2, p, div {
     width: 500px;
     text-align: justify;
   }
@@ -23,13 +23,8 @@
     margin-bottom: 0;
     color: $color-main-fill;
   }
-  p {
+  p, div {
     font-size: 14px;
-    margin-top: 5px;
-  }
-  &__pre-div {
-    font-size: 14px;
-    text-align: left;
     margin-top: 5px;
   }
   pre {
