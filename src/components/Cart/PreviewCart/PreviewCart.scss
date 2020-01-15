@@ -4,16 +4,58 @@
   position: absolute;
   left: -20%;
   width: 250px;
-  height: 300px;
+  max-height: 380px;
 }
 
-.preview-cart-wrapper {
+.preview-cart {
   background-color: $color-light-gray;
   border-radius: $radius;
   margin-top: 5px;
   height: 100%;
-  // box-shadow: 0 0 $base-size rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  &__line {
+    border-bottom: 1px solid $color-dark-gray;
+    width: 90%;
+    margin: 10px 0;
+  }
+  &__total {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    &__sub-div {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2px;
+      margin: 3px 0;
+      p {
+        margin: 0;
+      }
+      // border: 1px solid red;
+    }
+  }
+  &__order-btn {
+    width: 90%;
+    height: 45px;
+    border: none;
+    border-radius: 4px;
+    color: $color-light;
+    background: $color-main;
+    margin-top: 30px;
+    font-size: 14px;
+    letter-spacing: .8px;
+    margin: 0;
+    &:hover {
+      cursor: pointer;
+      background-color: $color-main-fill;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 }
