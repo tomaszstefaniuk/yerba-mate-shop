@@ -12,7 +12,7 @@ class AboutUs extends React.Component {
   render() {
     // return <div dangerouslySetInnerHTML={{ __html }} />;
     return (
-      <div class='about-us'>
+      <div className='about-us'>
         <h1>Yerba-Mate-Shop</h1>
         <p>Jesteśmy firmą sprzedającą Yerba Mate i akcesoria do niej z ponad 5
           letnim doświadczeniem w ich sprzedaży. Dzięki długoletniemu

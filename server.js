@@ -1,24 +1,36 @@
+require("dotenv").config();
 const express = require("express"); // <=> import express from 'express';
 const mongoose = require("mongoose");
+const bodyParser = require('body-parser');
+
+/*
+1. Start mongod service using "mongod" command in Git Bash
+2. Start node.js server using "nodemon server.js" command
+*/
+
+mongoose.connect('mongodb://localhost/yerba', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log(`Successfully connected to yerba DB`);
+});
 
 const app = express();
 const api = express.Router();
+const productsApi = require("./api/products");
 
-const PORT = 5000;
+const PORT = process.env.host_PORT;
 
-api.get("/test", (req, res) => {
-  const { query } = req;
-  res.send(`get ${query.q}`);
-});
-api.post("/test", (req, res) => {
-  const { body } = req;
-  res.send(`post ${body.q}`);
-});
-api.delete("/test", (req, res) => {
-  const { query } = req;
-  res.send(`delete ${query.q}`);
-});
+api.get("/product", productsApi.get);
+api.put("/product", productsApi.put);
+api.post("/product", productsApi.post);
+api.delete("/product", productsApi.del);
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use('/api', api);
 
 app.listen(PORT, () => {
