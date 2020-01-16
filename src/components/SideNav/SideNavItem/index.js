@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import { uid } from 'react-uid';
 
 
-const SideNavItem = ({ item, onPathChange }) => {
-  const [isOpen, setOpen] = useState(false);
+const SideNavItem = ({ item, currentPath, onPathChange }) => {
+  const initIsOpenValue = currentPath.split("/")[1] === item.path.split("/")[1];
+  const [isOpen, setOpen] = useState(initIsOpenValue);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setOpen(!isOpen);
+  }
+
   if(!item.subItems || (item.subItems && !Array.isArray(item.subItems))) {
     return (
       <li onClick={() => onPathChange(item.path)} className='sideNav__mainlist-li'>
@@ -15,7 +22,9 @@ const SideNavItem = ({ item, onPathChange }) => {
     )
   }
   return (
-    <li onClick={() => setOpen(!isOpen)} className={isOpen?'sideNav-mainlistOpen-li':'sideNav__mainlist-li'}>
+    <li
+      onClick={handleClick}
+      className={isOpen?'sideNav-mainlistOpen-li':'sideNav__mainlist-li'}>
       <div className='sideNav__wrapper'>
         <a href="#" className='sideNav__mainlist-a'>
           <p className={isOpen?'sideNav-mainlistOpen-p':'sideNav__mainlist-p'}>{item.label}</p>
@@ -23,16 +32,21 @@ const SideNavItem = ({ item, onPathChange }) => {
         {isOpen &&
           <div className='sideNav-subList'>
             <ul className='sideNav-subList__ul'>
-              {isOpen && item.subItems.map(subItem => (
-                <li
-                  key={uid(subItem)}
-                  className='sideNav-subList__li'
-                  onClick={() => onPathChange(`${item.path}${subItem.path}`)}>
-                  <a href="#" className='sideNav-subList__a'>
-                    <p className='sideNav-subList__p'>› {subItem.label}</p>
-                  </a>
-                </li>
-              ))}
+              {isOpen && item.subItems.map(subItem => {
+                const path = `${item.path}${subItem.path}`;
+                const dataState = currentPath === path ? 'active' : '';
+                return (
+                  <li
+                    key={uid(subItem)}
+                    className='sideNav-subList__li'
+                    data-state={dataState}
+                    onClick={() => onPathChange(path)}>
+                    <a href="#" className='sideNav-subList__a'>
+                      <p className='sideNav-subList__p'>› {subItem.label}</p>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>}
       </div>

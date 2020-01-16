@@ -91,6 +91,11 @@
 }
 
 /*SideNav Sublist */
+
+.sideNav-subList__li[data-state="active"] {
+  background-color: #e4e5e7;
+}
+
 .sideNav-subList {
   width: 100%;
   font-size: 14px;

@@ -34,7 +34,8 @@ class Container extends React.Component {
     {data.sideNav.mainList.forEach(route => {
       if(route.subItems) {
         route.subItems.forEach(subRoute => {
-          mainListRoutes.push(subRoute);
+          let newSubRoute = { ...subRoute, path: route.path + subRoute.path }
+          mainListRoutes.push(newSubRoute);
         });
       } else {
         mainListRoutes.push(route);
@@ -68,7 +69,8 @@ class Container extends React.Component {
                 <Route
                   key={uid(route)}
                   path={route.path}
-                  render={(props) => <Products {...props} route="lalal" />}
+                  onChange={(e) => console.log('change', e)}
+                  render={(props) => <Products {...props} type={route.type} />}
                 />
               ))}
 

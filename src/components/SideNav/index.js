@@ -6,17 +6,20 @@ import { uid } from 'react-uid';
 import SideNavItem from './SideNavItem';
 
 
-const SideNav = ({ history }) => {
+const SideNav = ({ history, location }) => {
   return(
     <aside className='sideNav'>
 			<ul className='sideNav__mainlist-ul'>
-        {dataStore.sideNav.mainList.map(item => (
-          <SideNavItem
-            item={item}
-            onPathChange={(path) => history.push(path)}
-            key={uid(item)}
-          />
-        ))}
+        {dataStore.sideNav.mainList.map(item => {
+          return (
+            <SideNavItem
+              key={uid(item)}
+              item={item}
+              currentPath={location.pathname}
+              onPathChange={(path) => history.push(path)}
+            />
+          );
+        })}
 			</ul>
 		</aside>
   );

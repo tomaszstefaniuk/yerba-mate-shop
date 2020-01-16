@@ -1,37 +1,37 @@
 import React from 'react';
 import styles from './Promotion.scss';
 import dataStore from '../../../data/dataStore.json';
+import withAutoScroll from 'components/hoc/withAutoScroll';
+import { uid } from 'react-uid';
 
 
 class Promotion extends React.Component {
-
-  componentDidMount() {
-    window.scrollTo({ top: 200, behavior: 'smooth' });
+  constructor(props) {
+    super(props);
+    const { promotion: data } = dataStore.topNav;
+    this.state = { data };
   }
 
   render() {
-    const items = [];
-
-    for (let i=0; i<dataStore.topNav.promotion.h2.length; i++) {
-      // <div>
-      //   <div>
-      //     <img src="" alt=""/>
-      //   </div>
-      //   <div>
-          {items.push(<h2 key={i}>{dataStore.topNav.promotion.h2[i]}</h2>);}
-          {items.push(<p key={i+9*9}>{dataStore.topNav.promotion.p[i]}</p>);}
-      //   </div>
-      // </div>
-    }
-
+    const { h1, items } = this.state.data;
     return (
       <div className='promotion'>
-        <h1>{dataStore.topNav.promotion.h1}</h1>
-        {items}
+        <h1>{h1}</h1>
+        {items.map(item => {
+          return (
+            <div key={uid(item)}>
+              <img src={item.img} alt=""/>
+              <div>
+                <h2>{item.h2}</h2>
+                <p>{item.p}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
 
 
-export default Promotion;
+export default withAutoScroll(Promotion, 200);
