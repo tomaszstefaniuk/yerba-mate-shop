@@ -24,6 +24,18 @@
   }
   p {
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: 7px;
+  }
+  &__section {
+    display: flex;
+    // border: 1px solid red;
+    margin: 10px 0;
+    img {
+      width: 100px;
+      margin-right: 20px;
+    }
+    div {
+      align-self: center;
+    }
   }
 }

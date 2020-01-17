@@ -19,8 +19,8 @@ class Promotion extends React.Component {
         <h1>{h1}</h1>
         {items.map(item => {
           return (
-            <div key={uid(item)}>
-              <img src={item.img} alt=""/>
+            <div key={uid(item)} className='promotion__section'>
+              <img src={item.img} alt="promotion-image"/>
               <div>
                 <h2>{item.h2}</h2>
                 <p>{item.p}</p>

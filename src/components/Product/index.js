@@ -10,9 +10,20 @@ const formatPrice = (price) => {
 }
 
 const Product = ({ name, price, imgSrc }) => {
+  let addScaleDown = false;
+  if (name==='CBSe Limon 0,5kg' || name==='CBSe Naranja 0,5kg'
+    || name==='Cruz De Malta Naranja 0,5kg' || name==='Cruz De Malta Limon 0,5kg'
+    || name==='Cruz De Malta Hierbas 0,5kg') {
+    addScaleDown = true;
+  }
+
   return (
     <div className='product'>
-      <img src={imgSrc} alt="yerba-mate-shop"/>
+      <img
+        src={imgSrc}
+        alt="yerba-mate-shop"
+        className={addScaleDown?'product__img-scale-down':''}
+      />
       <p className='product__desc'>{name}</p>
       <div className='product__btn-div'>
         <p className='product__btn-div__price'>{formatPrice(price)}</p>

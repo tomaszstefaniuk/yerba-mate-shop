@@ -19,8 +19,13 @@
   }
   img {
     width: 140px;
+    height: 160px;
+    object-fit: cover;
     border: 1px solid #e4e5e7;
     margin-top: 5px;
+  }
+  &__img-scale-down {
+    object-fit: scale-down !important;
   }
   &__btn-div {
     display: flex;
