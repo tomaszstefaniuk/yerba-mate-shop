@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import LoginHeader from '../LoginHeader';
 import Container from '../Container';
 import Footer from '../Footer';
+import ScrollToTop from '../ScrollToTop';
 
 
 class Home extends React.Component {
@@ -16,6 +17,7 @@ class Home extends React.Component {
           <Container />
         </div>
         <Footer />
+        <ScrollToTop />
       </div>
     );
   }

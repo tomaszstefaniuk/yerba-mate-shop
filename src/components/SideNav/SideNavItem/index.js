@@ -8,9 +8,11 @@ const SideNavItem = ({ item, currentPath, onPathChange }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    setOpen(!isOpen);
-  }
+    if(!e.target.className.includes('subList')){
+      setOpen(!isOpen);
+    }
 
+  }
   if(!item.subItems || (item.subItems && !Array.isArray(item.subItems))) {
     return (
       <li onClick={() => onPathChange(item.path)} className='sideNav__mainlist-li'>
@@ -40,7 +42,7 @@ const SideNavItem = ({ item, currentPath, onPathChange }) => {
                     key={uid(subItem)}
                     className='sideNav-subList__li'
                     data-state={dataState}
-                    onClick={() => onPathChange(path)}>
+                    onClick={(e) => { onPathChange(path) }}>
                     <a href="#" className='sideNav-subList__a'>
                       <p className='sideNav-subList__p'>› {subItem.label}</p>
                     </a>

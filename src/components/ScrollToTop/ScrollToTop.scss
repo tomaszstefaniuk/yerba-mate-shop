@@ -1,0 +1,28 @@
+@import '../../styles/settings.scss';
+
+.scroll-to-top {
+  opacity: 1;
+  transition: $transition;
+  i {
+    position: fixed;
+    left: 92%;
+    top: 85%;
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    color: $color-grey-font;
+    font-size: 40px;
+    border: 2px solid $color-grey-font;
+    text-align: center;
+    padding-top: 6px;
+    border-radius: $radius;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.scroll-to-top-hidden {
+  opacity: 0;
+}

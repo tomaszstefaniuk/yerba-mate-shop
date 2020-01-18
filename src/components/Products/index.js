@@ -23,13 +23,15 @@ class Products extends React.Component {
     const { products } = this.state;
     return (
       <div className='products-wrapper'>
-        {products.map(({ _id, name, price, imgSrc }) => (
-          <Product
-            key={_id}
-            name={name}
-            price={price}
-            imgSrc={imgSrc} />
-        ))}
+        <div className='products-wrapper__container'>
+          {products.map(({ _id, name, price, imgSrc }) => (
+            <Product
+              key={_id}
+              name={name}
+              price={price}
+              imgSrc={imgSrc} />
+          ))}
+        </div>
       </div>
     );
   }

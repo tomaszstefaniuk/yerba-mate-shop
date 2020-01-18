@@ -13,7 +13,12 @@ const Product = ({ name, price, imgSrc }) => {
   let addScaleDown = false;
   if (name==='CBSe Limon 0,5kg' || name==='CBSe Naranja 0,5kg'
     || name==='Cruz De Malta Naranja 0,5kg' || name==='Cruz De Malta Limon 0,5kg'
-    || name==='Cruz De Malta Hierbas 0,5kg') {
+    || name==='Cruz De Malta Hierbas 0,5kg' || name==='Kozieradka - nasiona całe 100g'
+    || name==='Herbatka Detox 100g' || name==='Herbata Rozgrzewająca 100g'
+    || name==='Figa Suszony Owoc 200g' || name==='Bez Czarny Kwiat 50g'
+    || name.includes('Bombilla') || name==='Szczoteczka do bombilli'
+    || name==='Termometr analogowy')
+  {
     addScaleDown = true;
   }
 

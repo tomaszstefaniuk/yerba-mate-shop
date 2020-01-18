@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { uid } from 'react-uid';
 
-//App components
 import SearchEngine from '../SearchEngine';
 import Cart from '../Cart';
 import TopNav from '../TopNav';
@@ -81,7 +80,7 @@ class Container extends React.Component {
               <Route path="/kontakt" component={Contact} />
               {/*Footer*/}
               <Route path="/regulamin" component={Rules} />
-              <Route path="/polityka-prywatnosci" component={Policy} onUpdate={() => window.scrollTo(0, 0)} />
+              <Route path="/polityka-prywatnosci" component={Policy} />
               <Route path="/o-firmie" component={AboutUs} />
               <Route path="/kontakt" component={Contact} />
               <Route path="/zwroty" component={Returns} />
