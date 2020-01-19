@@ -34,3 +34,13 @@
     margin-bottom: 20px;
   }
 }
+
+/* MEDIA */
+@media (max-width: 1000px) {
+  .how-to-use-yerba {
+    h2, p {
+      width: auto;
+      margin: 5px 10px;
+    }
+  }
+}

@@ -69,3 +69,33 @@ footer {
   justify-content: center;
   color: #8E9198;
 }
+
+
+/* MEDIA */
+@media (max-width: 1190px) {
+  .footer-info__sec2 {
+    width: 170px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .footer-info__sec2 {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 950px) {
+  .footer-info {
+    justify-content: space-around;
+    padding-left: 50px;
+  }
+  .footer-info__sec1 {
+    padding: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-info {
+    padding-left: 50px;
+  }
+}

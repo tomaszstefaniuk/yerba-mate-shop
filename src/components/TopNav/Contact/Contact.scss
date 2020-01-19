@@ -51,3 +51,14 @@
     }
   }
 }
+
+/* MEDIA */
+@media (max-width: 1000px) {
+  .contact {
+    form {
+      input {
+        width: auto;
+      }
+    }
+  }
+}

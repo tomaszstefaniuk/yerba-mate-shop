@@ -1,7 +1,7 @@
 import React from 'react';
 import withAutoScroll from 'components/hoc/withAutoScroll';
-import styles from './Returns.scss';
 import __html from 'data/Footer/returns';
+import './Returns.scss';
 
 
 class Returns extends React.Component {

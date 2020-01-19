@@ -28,7 +28,6 @@
   }
   &__section {
     display: flex;
-    // border: 1px solid red;
     margin: 10px 0;
     img {
       width: 100px;
@@ -37,5 +36,21 @@
     div {
       align-self: center;
     }
+  }
+}
+
+/* MEDIA */
+@media (max-width: 1190px) {
+  .promotion__section {
+    align-self: flex-start;
+    h2, p {
+      width: auto;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .promotion__section {
+    flex-direction: column;
   }
 }

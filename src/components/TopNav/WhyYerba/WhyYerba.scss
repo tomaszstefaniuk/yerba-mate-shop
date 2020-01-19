@@ -27,3 +27,13 @@
     margin-top: 5px;
   }
 }
+
+/* MEDIA */
+@media (max-width: 1000px) {
+  .why-yerba {
+    h2, p {
+      width: auto;
+      margin: 5px 10px;
+    }
+  }
+}

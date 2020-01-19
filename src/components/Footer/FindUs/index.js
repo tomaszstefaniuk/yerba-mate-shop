@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './FindUs.scss';
+import './FindUs.scss';
 import __html from 'data/Footer/findUs';
 
 

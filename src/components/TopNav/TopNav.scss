@@ -38,3 +38,26 @@
     color: $color-light;
   }
 }
+
+/* MEDIA */
+
+
+@media (max-width: 950px) {
+  .topNav ul {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    li {
+      width: 500px;
+      margin: 2px 0;
+    }
+  }
+}
+
+@media (max-width: 530px) {
+  .topNav ul {
+    li {
+      width: 300px;
+    }
+  }
+}

@@ -33,3 +33,40 @@
 .main-section-wrapper {
   width: 900px;
 }
+
+
+/* MEDIA */
+@media (max-width: 1190px) {
+  .centre-wrapper {
+    justify-content: space-around;
+  }
+  .main-section-wrapper {
+    width: 640px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .centre-wrapper {
+    justify-content: space-around;
+  }
+  .main-section-wrapper {
+    width: 475px;
+    align-self: center;
+  }
+}
+
+@media (max-width: 760px) {
+  .main-section-wrapper {
+    width: 220px;
+  }
+  .header-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 650px) {
+  .centre-wrapper {
+    justify-content: space-between;
+  }
+}

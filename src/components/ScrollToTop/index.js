@@ -14,7 +14,7 @@ class ScrollToTop extends React.Component {
   }
 
   handleScroll = () => {
-    (window.pageYOffset>450) ?
+    (window.pageYOffset>420) ?
       this.setState({isVisible: true}):
       this.setState({isVisible: false});
   }

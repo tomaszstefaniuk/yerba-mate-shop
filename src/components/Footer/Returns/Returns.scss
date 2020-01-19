@@ -13,3 +13,11 @@
   text-align: left;
   line-height: 16px;
 }
+
+
+/* MEDIA */
+@media (max-width: 1190px) {
+  .returns {
+    line-height: normal;
+  }
+}

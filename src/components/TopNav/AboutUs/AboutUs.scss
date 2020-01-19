@@ -35,3 +35,16 @@
     }
   }
 }
+
+/* MEDIA */
+@media (max-width: 1000px) {
+  .about-us {
+    h2, p, div {
+      width: auto;
+      margin: 5px 10px;
+    }
+    pre {
+      white-space: pre-wrap;
+    }
+  }
+}
