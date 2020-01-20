@@ -25,10 +25,12 @@ const productsApi = require("./api/products");
 
 const PORT = process.env.HOST_PORT;
 
+api.get("/product/pagination", productsApi.pagination); // => api/product/pagination?type={X}
 api.get("/product", productsApi.get);
 api.put("/product", productsApi.put);
 api.post("/product", productsApi.post);
 api.delete("/product", productsApi.del);
+
 
 const whitelist = [`http://localhost:${process.env.PORT}`];
 const corsOptions = {

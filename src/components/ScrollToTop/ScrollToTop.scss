@@ -2,7 +2,7 @@
 
 .scroll-to-top {
   opacity: 1;
-  transition: $transition;
+  transition: opacity $transition-duration;
   i {
     position: fixed;
     left: 92%;
@@ -21,8 +21,7 @@
       outline: none;
     }
   }
-}
-
-.scroll-to-top-hidden {
-  opacity: 0;
+  &.hidden {
+    opacity: 0;
+  }
 }

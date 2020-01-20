@@ -2,27 +2,26 @@ const Product = require("../schemas/Product");
 
 function get(req, res) { // pobieranie listy wszystkich produktów
   const { query } = req;
-  const { type } = query;
+  const { type, q } = query;
+  const itemsPerPage = Number(query.itemsPerPage);
+  const page = Number(query.page);
   let errors = {};
+  const filters = {};
+  if (type) { filters.type = type; }
+  if (q) { filters.name = { "$regex": q, "$options": "i" } }
 
   try {
-    if (type) {
-      Product.find({type}, (err, products) => {
-        if (err) {
-          let errors = { "error": err };
-          res.status(500).json(errors);
-        }
-        res.status(200).json(products);
-      });
-    } else {
-      Product.find((err, products) => {
-        if (err) {
-          let errors = { "error": err };
-          res.status(500).json(errors);
-        }
-        res.status(200).json(products);
-      });
-    }
+    Product
+    .find(filters)
+    .skip(itemsPerPage * page)
+    .limit(itemsPerPage)
+    .exec((err, products) => {
+      if (err) {
+        let errors = { "error": err };
+        res.status(500).json(errors);
+      }
+      res.status(200).json(products);
+    });
   } catch (err) {
     if (err) {
       let errors = { "error": err };
@@ -68,9 +67,30 @@ function post(req, res) { // edytowanie produktu
   res.send('post')
 }
 
+function pagination(req, res) {
+  const { itemsPerPage, type, q } = req.query;
+
+  const filters = {};
+  if (type) { filters.type = type; }
+  if (q) { filters.name = { "$regex": q, "$options": "i" } }
+
+  Product.countDocuments(filters, (err, count) => {
+    if (err) {
+      let errors = { "product": err };
+      res.status(500).json(errors);
+    }
+    res.status(200).json({
+      itemsPerPage: Number(itemsPerPage),
+      nOfPages: Math.ceil(count / Number(itemsPerPage)),
+      total: count
+    });
+  })
+}
+
 module.exports = {
   get,
   put,
   del,
-  post
+  post,
+  pagination
 };

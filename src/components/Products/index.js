@@ -1,30 +1,19 @@
 import React from 'react';
 import styles from './Products.scss';
 import Product from '../Product';
-import Paging from '../Paging';
 import withAutoScroll from 'components/hoc/withAutoScroll';
+import withPagination from 'components/hoc/withPagination';
+import productService from 'services/productService';
 
 
 class Products extends React.Component {
-  state = { products: [] };
-
-  componentDidMount() {
-    const { type } = this.props;
-    fetch(
-      `http://localhost:5001/api/product?type=${type || ""}`,
-      { mode: 'cors' }
-    ).then(res => {
-      res.json()
-      .then(products => this.setState({ products }));
-    });
-  }
-
   render() {
-    const { products } = this.state;
+    const products = this.props.data;
+    const isProducts = products && Array.isArray(products);
     return (
       <div className='products-wrapper'>
         <div className='products-wrapper__container'>
-          {products.map(({ _id, name, price, imgSrc }) => (
+          {isProducts && products.map(({ _id, name, price, imgSrc }) => (
             <Product
               key={_id}
               name={name}
@@ -37,4 +26,7 @@ class Products extends React.Component {
   }
 }
 
-export default withAutoScroll(Products, 200);
+export default withPagination(
+  withAutoScroll(Products, 200),
+  productService.getProducts
+);

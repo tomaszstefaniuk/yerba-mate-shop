@@ -28,9 +28,10 @@ class ScrollToTop extends React.Component {
 
   render() {
     const { isVisible } = this.state;
+    const scrollToTopClassName = `scroll-to-top ${isVisible ? '' : 'hidden'}`;
     return (
       <div
-        className={isVisible?'scroll-to-top':'scroll-to-top-hidden'}
+        className={scrollToTopClassName}
         onClick={() => this.scrollToTop()}
       >
         <i className="fas fa-chevron-up"></i>
