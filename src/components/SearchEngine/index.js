@@ -22,7 +22,8 @@ class SearchEngine extends React.Component {
             onChange={this.handleInputChange}
             value={this.state.value}
             className='search-engine__input'
-            title='Co chcesz wyszukać' />
+            title='Co chcesz wyszukać'
+            onKeyDown={e => e.keyCode === 13 ? this.handleSubmit() : null}/>
           <button
             type='submit'
             className='search-engine__button'

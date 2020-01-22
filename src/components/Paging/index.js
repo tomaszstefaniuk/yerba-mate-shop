@@ -6,7 +6,7 @@ const Paging = ({ itemsPerPage, page, nOfPages, onPageChange }) => {
   return (
     <div className='products-pagination'>
       <ul className='paginator'>
-        <li onClick={() => onPageChange(page ? page - 1 : 0)}>«</li>
+        <li onClick={() => onPageChange(page ? page - 1 : 0)}>‹</li>
           {pages.map(index => {
             return (
               <Page
@@ -18,7 +18,7 @@ const Paging = ({ itemsPerPage, page, nOfPages, onPageChange }) => {
               />
             );
           })}
-        <li onClick={() => onPageChange(page === pages.length - 1 ? pages.length - 1 : page + 1)}>»</li>
+        <li onClick={() => onPageChange(page === pages.length - 1 ? pages.length - 1 : page + 1)}>›</li>
       </ul>
     </div>
   );

@@ -1,5 +1,7 @@
 @import '../../styles/settings.scss';
 
+$sideNavItem-height: 27px;
+
 /*SideNav when Closed */
 .sideNav {
   font-size: 14px;
@@ -20,7 +22,6 @@
     border-radius: 4px;
     margin-top: 5px;
     margin-bottom: 5px;
-    height: 50px;
     &:hover i {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
@@ -71,7 +72,6 @@
   border-radius: 4px;
   margin-top: 5px;
   margin-bottom: 5px;
-  max-height: 300px;
   &:hover i {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -99,6 +99,7 @@
   width: 100%;
   font-size: 14px;
   font-weight: normal;
+  transition: height $transition;
   &__ul {
     list-style: none;
     padding: 0;
@@ -130,4 +131,8 @@
   li:last-of-type p{
     border-bottom-left-radius: $radius;
   }
+}
+
+:export {
+  sideNavItemHeight: $sideNavItem-height;
 }

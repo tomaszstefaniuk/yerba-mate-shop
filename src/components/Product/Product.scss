@@ -6,7 +6,7 @@
   width: 200px;
   height: 270px;
   border-radius: $radius;
-  transition: $transition;
+  transition: all $transition-duration;
   &:hover {
     border: 1px solid $color-main-focus;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(241,196,15,1);
@@ -48,15 +48,7 @@
       &:hover {
         cursor: pointer;
         color: #555;
-        // background-color: #d3d4d6;
-
       }
-      // &:hover-within{
-      //   -webkit-box-shadow: 0px 0px 5px 0px rgba(241,196,15,1);
-      //   -moz-box-shadow: 0px 0px 5px 0px rgba(241,196,15,1);
-      //   box-shadow: 0px 0px 5px 0px rgba(241,196,15,1);
-      //   border-radius: 5px;
-      // }
     }
   }
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { uid } from 'react-uid';
+import strToNum from 'helpers/strToNum';
+import styles from '../SideNav.scss';
 
 class SideNavItem extends React.PureComponent {
   constructor(props) {
@@ -58,6 +60,12 @@ class SideNavItem extends React.PureComponent {
         </li>
       )
     }
+
+    const { sideNavItemHeight } = styles;
+    const sideNavHeight = `${(
+      strToNum(sideNavItemHeight) * item.subItems.length
+    )}px`;
+
     return (
       <li
         onClick={this.handleClick}
@@ -69,26 +77,27 @@ class SideNavItem extends React.PureComponent {
               {item.label}
             </p>
           </a>
-          {isOpen &&
-            <div className='sideNav-subList'>
-              <ul className='sideNav-subList__ul'>
-                {isOpen && item.subItems.map(subItem => {
-                  const path = `${item.path}${subItem.path}`;
-                  const dataState = currentPath === path ? 'active' : '';
-                  return (
-                    <li
-                      key={uid(subItem)}
-                      className='sideNav-subList__li'
-                      data-state={dataState}
-                      onClick={(e) => { onPathChange(path) }}>
-                      <a href="#" className='sideNav-subList__a'>
-                        <p className='sideNav-subList__p'>› {subItem.label}</p>
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>}
+
+          <div className='sideNav-subList' style={{ maxHeight: sideNavHeight, height: isOpen ? sideNavHeight : '0px', overflow: 'hidden', transition: 'height 0.4s' }}>
+            <ul className='sideNav-subList__ul'>
+              {item.subItems.map(subItem => {
+                const path = `${item.path}${subItem.path}`;
+                const dataState = currentPath === path ? 'active' : '';
+                return (
+                  <li
+                    key={uid(subItem)}
+                    className='sideNav-subList__li'
+                    data-state={dataState}
+                    style={{ height: sideNavItemHeight }}
+                    onClick={(e) => { onPathChange(path) }}>
+                    <a href="#" className='sideNav-subList__a'>
+                      <p className='sideNav-subList__p'>› {subItem.label}</p>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
         <i className={iClassName}></i>
       </li>
