@@ -15,6 +15,7 @@ class Products extends React.Component {
         <div className='products-wrapper__container'>
           {isProducts && products.map(({ _id, name, price, imgSrc }) => (
             <Product
+              _id={_id}
               key={_id}
               name={name}
               price={price}

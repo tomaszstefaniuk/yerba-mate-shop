@@ -2,6 +2,9 @@ import React from 'react';
 import './Cart.scss';
 import dataStore from '../../data/dataStore.json';
 import PreviewCart from './PreviewCart';
+import { connect } from 'react-redux';
+import cartActions from 'redux/actions/cartActions';
+import productService from 'services/productService';
 
 
 class Cart extends React.Component {
@@ -9,6 +12,7 @@ class Cart extends React.Component {
     super();
 
     this.state = {
+      items: [],
       showPreviewCart: false
     }
   }
@@ -18,6 +22,13 @@ class Cart extends React.Component {
     this.setState({
       showPreviewCart: showCart
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.items !== this.props.items) {
+      productService.getManyProducts(nextProps.items)
+      .then(items => this.setState({ items }))
+    }
   }
 
   render() {
@@ -34,12 +45,18 @@ class Cart extends React.Component {
           <i className={'fas fa-sort' + (this.state.showPreviewCart?' fa-sort-up':' fa-sort-down')}></i>
         </div>
         {this.state.showPreviewCart &&
-          <PreviewCart showPreviewCart={this.togglePreviewCart}/>
+          <PreviewCart
+            items={this.state.items}
+            onItemDelete={this.props.delItem}
+            showPreviewCart={this.togglePreviewCart}/>
         }
       </div>
     );
   }
 }
 
+const mapDispatchToProps = { delItem: cartActions.del };
 
-export default Cart;
+const mapStateToProps = state => ({ items: state.cartReducer.items });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

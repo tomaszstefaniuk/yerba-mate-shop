@@ -9,4 +9,7 @@ import store from './redux/store';
 import App from './components/App/App.js';
 
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
+ReactDOM.render(
+  <Provider store={store}><App /></Provider>,
+  document.getElementById('app')
+);

@@ -10,6 +10,18 @@ function getProducts({ type='', itemsPerPage=ITEMS_PER_PAGE, page=0, search='?' 
   );
 }
 
+function getManyProducts(itemIDs) {
+  const itemsStr = itemIDs
+  .map(item => `items[]=${item}&`)
+  .join('')
+  .slice(0, -1);
+
+  return fetch(
+    `${process.env.REACT_APP_API_URL}product/many?${itemsStr}`,
+    { mode: 'cors' }
+  ).then(res => res.json());
+}
+
 function getPagination(type=false, itemsPerPage=ITEMS_PER_PAGE, search='?') {
   const typeQuery = type ? `type=${type}&` : '';
   const itemsPerPageQuery = itemsPerPage ? `itemsPerPage=${itemsPerPage}` : '';
@@ -28,5 +40,6 @@ jeżeli query jest obecne to wygląda tak "?q={value}"
 
 export default {
   getProducts,
+  getManyProducts,
   getPagination
 };

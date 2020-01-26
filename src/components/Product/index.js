@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './Product.scss';
 import dataStore from '../../data/dataStore.json';
+import { connect } from 'react-redux';
+import cartActions from 'redux/actions/cartActions';
 
 const formatPrice = (price) => {
   if (!price) { return null; }
@@ -9,7 +11,7 @@ const formatPrice = (price) => {
   return `${priceFloorValue},${priceDecimalValues} zł`;
 }
 
-const Product = ({ name, price, imgSrc }) => {
+const Product = ({ _id, name, price, imgSrc, addProduct }) => {
   let addScaleDown = false;
   if (name==='CBSe Limon 0,5kg' || name==='CBSe Naranja 0,5kg'
     || name==='Cruz De Malta Naranja 0,5kg' || name==='Cruz De Malta Limon 0,5kg'
@@ -32,10 +34,14 @@ const Product = ({ name, price, imgSrc }) => {
       <p className='product__desc'>{name}</p>
       <div className='product__btn-div'>
         <p className='product__btn-div__price'>{formatPrice(price)}</p>
-        <button type="button">Dodaj do<br />koszyka</button>
+        <button type="button" onClick={e => addProduct(_id)}>
+          Dodaj do<br />koszyka
+        </button>
       </div>
     </div>
   );
 }
 
-export default Product;
+const mapDispatchToProps = { addProduct: cartActions.add };
+
+export default connect(null, mapDispatchToProps)(Product);

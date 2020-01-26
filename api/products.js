@@ -1,4 +1,25 @@
 const Product = require("../schemas/Product");
+const mongoose = require("mongoose");
+
+function getMany(req, res) {
+  const { items } = req.query;
+  if (!Array.isArray(items) || items.length === 0) {
+    res.json([]);
+  } else {
+    try {
+      Product.find({
+        '_id': { $in: [ ...items.map(_id => mongoose.Types.ObjectId(_id)) ]}
+      }, (err, docs) => {
+        res.json(docs);
+      });
+    } catch (err) {
+      if (err) {
+        let errors = { "error": err };
+        res.status(500).json(errors);
+      }
+    }
+  }
+}
 
 function get(req, res) { // pobieranie listy wszystkich produktów
   const { query } = req;
@@ -89,6 +110,7 @@ function pagination(req, res) {
 
 module.exports = {
   get,
+  getMany,
   put,
   del,
   post,
