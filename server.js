@@ -52,22 +52,22 @@ api.delete("/product", productsApi.del);
 
 api.post("/mail", mailApi.post);
 
-
-const whitelist = [`http://localhost:${process.env.PORT}`];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+// const whitelist = [`http://localhost:${process.env.PORT}`];
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin || whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
 
 app.use(cors());//(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/api', api);
+app.use(express.static('build'));
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
