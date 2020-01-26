@@ -3,6 +3,9 @@ const express = require("express"); // <=> import express from 'express';
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
+
+const PORT = process.env.HOST_PORT;
 
 /*
 1. Start mongod service using "mongod" command in Git Bash
@@ -21,16 +24,33 @@ db.once('open', function() {
 
 const app = express();
 const api = express.Router();
-const productsApi = require("./api/products");
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: 587,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
+  }
+});
+transporter.verify((error, success) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Server is ready to take messages');
+  }
+});
 
-const PORT = process.env.HOST_PORT;
+const productsApi = require("./api/products");
+const mailApi = require("./api/mail");
 
 api.get("/product/pagination", productsApi.pagination); // => api/product/pagination?type={X}
-api.get("/product/many", productsApi.getMany); 
+api.get("/product/many", productsApi.getMany);
 api.get("/product", productsApi.get);
 api.put("/product", productsApi.put);
 api.post("/product", productsApi.post);
 api.delete("/product", productsApi.del);
+
+api.post("/mail", mailApi.post);
 
 
 const whitelist = [`http://localhost:${process.env.PORT}`];

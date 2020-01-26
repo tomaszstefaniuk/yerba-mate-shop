@@ -1,28 +1,61 @@
 import React from 'react';
+import withAutoScroll from 'components/hoc/withAutoScroll';
+import mailService from 'services/mailService';
 import './Contact.scss';
 
-class Contact extends React.Component {
+const initialState = { name: '', email: '', subject: '', message: '' };
 
-  componentDidMount() {
-    window.scrollTo({ top: 200, behavior: 'smooth' });
+class Contact extends React.Component {
+  state = initialState;
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, subject, message } = this.state;
+    mailService.post({ name, email, subject, message })
+    .then(res => {
+      if (res.status === 'success') {
+        alert('Pomyślnie wysłano');
+        this.setState(initialState)
+      } else {
+        alert('Wystąpił błąd');
+      }
+    });
   }
+
+  handleValueChange = (key, value) => this.setState({ [key]: value });
 
   render() {
     return (
       <div className='contact'>
         <h1>Napisz do nas</h1>
-        <form action="">
+        <form onSubmit={this.handleSubmit}>
           <div>
-              <input name="yourName" placeholder="Twoje imię" required type="text" />
+              <input
+                placeholder="Twoje imię"
+                required
+                type="text"
+                onClick={e => this.handleValueChange('name', e.target.value)}/>
           </div>
           <div>
-              <input name="yourEmail" placeholder="Twój e-mail" required type="email" />
+              <input
+                placeholder="Twój e-mail"
+                required
+                type="text"
+                onClick={e => this.handleValueChange('email', e.target.value)}/>
           </div>
           <div>
-              <input name="subject" placeholder="Temat" required type="text" />
+              <input
+                placeholder="Temat"
+                required
+                type="text"
+                onClick={e => this.handleValueChange('subject', e.target.value)}/>
           </div>
           <div>
-              <input name="message" placeholder="Treść wiadomości" required type="text" />
+              <input
+                placeholder="Treść wiadomości"
+                required
+                type="text"
+                onClick={e => this.handleValueChange('message', e.target.value)}/>
           </div>
           <button type="submit">Wyślij</button>
         </form>
@@ -32,4 +65,4 @@ class Contact extends React.Component {
 }
 
 
-export default Contact;
+export default withAutoScroll(Contact, 200);
