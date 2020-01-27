@@ -55,6 +55,7 @@ class Contact extends React.Component {
                 placeholder="Treść wiadomości"
                 required
                 type="text"
+                className='contact__message-input'
                 onClick={e => this.handleValueChange('message', e.target.value)}/>
           </div>
           <button type="submit">Wyślij</button>

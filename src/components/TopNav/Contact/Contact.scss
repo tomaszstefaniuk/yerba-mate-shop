@@ -19,7 +19,7 @@
     margin-top: 20px;
     input {
         padding: 10px;
-        width: 500px;
+        width: 450px;
         border-radius: $radius;
         background: #f9fafc;
         color: $color-dark;
@@ -30,7 +30,7 @@
         outline: none;
       }
     }
-    input[name="message"] {
+    .contact__message-input {
         height: 150px;
         padding-bottom: 123px;
     }

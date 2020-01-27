@@ -8,15 +8,13 @@ const CartItem = ({
   _id,
   name,
   price,
-  // imgSrc,
-  // type,
   onItemDelete
 }) => {
   return (
-    <div style={{ display: 'flex' }}>
-      <div>{name}</div>
-      <div>{`${price}zł`}</div>
-      <button onClick={(e) => onItemDelete(_id)}>X</button>
+    <div className='preview-cart-item'>
+      <div className='preview-cart-item__name'>{name}</div>
+      <div className='preview-cart-item__price'>{`${price.toFixed(2)}zł`}</div>
+      <i class="fas fa-trash-alt" onClick={(e) => onItemDelete(_id)}></i>
     </div>
   );
 }
@@ -36,7 +34,7 @@ class PreviewCart extends React.Component {
         onMouseLeave={() => this.props.showPreviewCart(false)}
       >
         <div className='preview-cart'>
-          <div>{items.length <= 0 ? (
+          <div className='preview-cart-item-container'>{items.length <= 0 ? (
             `(Brak produktów w koszyku)`
           ) : (
             items.map(item => (
@@ -52,15 +50,15 @@ class PreviewCart extends React.Component {
           <div className='preview-cart__total'>
             <div className='preview-cart__total__sub-div'>
               <p>Produkty:</p>
-              <p>{itemsPrice}zł</p>
+              <p>{itemsPrice.toFixed(2)}zł</p>
             </div>
             <div className='preview-cart__total__sub-div'>
               <p>Dostawa:</p>
-              <p>{DELIVERY_COST}zł</p>
+              <p>{DELIVERY_COST.toFixed(2)}zł</p>
             </div>
             <div className='preview-cart__total__sub-div'>
               <p><b>Do zapłaty:</b></p>
-              <p><b>{itemsPrice + DELIVERY_COST}zł</b></p>
+              <p><b>{(itemsPrice + DELIVERY_COST).toFixed(2)}zł</b></p>
             </div>
           </div>
           <div className='preview-cart__line'></div>

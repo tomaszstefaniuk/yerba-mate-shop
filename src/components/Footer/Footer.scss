@@ -75,6 +75,9 @@ footer {
 @media (max-width: 1190px) {
   .footer-info__sec2 {
     width: 170px;
+    i {
+      margin-top: 10px;
+    }
   }
 }
 

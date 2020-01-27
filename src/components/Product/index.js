@@ -6,7 +6,7 @@ import cartActions from 'redux/actions/cartActions';
 
 const formatPrice = (price) => {
   if (!price) { return null; }
-  const priceDecimalValues = Math.floor(price * 100).toString().slice(-2);
+  const priceDecimalValues = Math.ceil(price * 100).toString().slice(-2);
   const priceFloorValue = Math.floor(price);
   return `${priceFloorValue},${priceDecimalValues} zł`;
 }
