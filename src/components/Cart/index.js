@@ -32,6 +32,9 @@ class Cart extends React.Component {
   }
 
   render() {
+
+    const { items, showPreviewCart } = this.state;
+
     return (
       <div className='cart-wrapper'>
         <div
@@ -41,12 +44,15 @@ class Cart extends React.Component {
         >
           <i className='fas fa-shopping-cart'></i>
           <span className='cart-main0'>{dataStore.cart.main[0]}</span>
-          <span className='cart-main1'>{dataStore.cart.main[1]}</span>
-          <i className={'fas fa-sort' + (this.state.showPreviewCart?' fa-sort-up':' fa-sort-down')}></i>
+          <span className='cart-main1'>
+            {items.length>0 ? `(${items.length} prod.)`:
+              dataStore.cart.main[1]}
+          </span>
+          <i className={'fas fa-sort' + (showPreviewCart?' fa-sort-up':' fa-sort-down')}></i>
         </div>
         {this.state.showPreviewCart &&
           <PreviewCart
-            items={this.state.items}
+            items={items}
             onItemDelete={this.props.delItem}
             showPreviewCart={this.togglePreviewCart}/>
         }

@@ -28,4 +28,11 @@
     margin: 0;
     font-size: ($base-size *1.03);
   }
+
+  &__welcome {
+    cursor: default;
+    &:hover {
+      background: $color-dark;
+    }
+  }
 }

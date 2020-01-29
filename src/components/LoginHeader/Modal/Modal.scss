@@ -92,3 +92,10 @@
     background-color: #f5f6f8;
   }
 }
+
+.modal-authError {
+  color: $color-warning;
+  font-size: 13px;
+  position: absolute;
+  top: 95px;
+}

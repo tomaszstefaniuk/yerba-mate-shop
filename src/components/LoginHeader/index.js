@@ -14,15 +14,9 @@ class LoginHeader extends React.Component {
       showModal: false,
       showLogin: false,
       logged: false,
-      userName: ''
+      userName: '',
+      authError: false
     };
-  }
-
-  componentDidMount() {
-    if (window.localStorage.token) this.setState({
-      logged: true,
-      userName: window.localStorage.name
-    })
   }
 
   openModal = (showLogin) => {
@@ -31,49 +25,73 @@ class LoginHeader extends React.Component {
       showLogin
     });
   }
+
   onRegisterHandler = async (e, { name, password, email }) => {
-    e.preventDefault()
+    e.preventDefault();
+    if(name==='' || email==='' || password==='') {
+      this.setState({
+        authError: true
+      });
+      return;
+    }
     try {
       const data = await AuthService.register({ name, password, email })
       // @TODO przeniesc do czesto uzywanych (common.js) (np. doAfterLogin())
-      window.localStorage.token = data.data.token
-      window.localStorage.name = data.data.name
+      window.localStorage.token = data.data.token;
+      window.localStorage.name = data.data.name;
       this.setState({
         userName: data.data.name,
-        logged: true
-      })
+        logged: true,
+        showModal: false
+      });
     } catch(e) {
-        console.warn(e)
+        console.warn(e);
+        this.setState({
+          authError: true
+        });
     }
   }
-    onLoginHandler = async (e, { email, password }) => {
-      e.preventDefault()
-      try {
-        const data = await AuthService.login({ password, email })
-        // @TODO przeniesc do czesto uzywanych (common.js) (np. doAfterLogin())
-        window.localStorage.token = data.data.token
-        window.localStorage.name = data.data.name
-        this.setState({
-          userName: data.data.name,
-          logged: true
-        })
-        this.props.closeModal()
-      } catch(e) {
-          console.warn(e)
-      }
+
+  onLoginHandler = async (e, { email, password }) => {
+    e.preventDefault();
+    if(email==='' || password==='') {
+      this.setState({
+        authError: true
+      });
+      return;
     }
-logout = () => {
-  window.localStorage.token = null
-  window.localStorage.name = null
-  this.setState({
-    userName: '',
-    logged: false
-  })
-}
+    try {
+      const data = await AuthService.login({ password, email })
+      // @TODO przeniesc do czesto uzywanych (common.js) (np. doAfterLogin())
+      window.localStorage.token = data.data.token;
+      window.localStorage.name = data.data.name;
+      this.setState({
+        userName: data.data.name,
+        logged: true,
+        showModal: false
+      })
+      this.props.closeModal();
+    } catch(e) {
+        console.warn(e);
+        this.setState({
+          authError: true
+        });
+    }
+  }
+
+  logout = () => {
+    window.localStorage.token = null
+    window.localStorage.name = null
+    this.setState({
+      userName: '',
+      logged: false
+    })
+  }
 
   closeModal = () => {
     this.setState({
-      showModal: false
+      showModal: false,
+      authError: false
     });
   }
 
@@ -83,20 +101,25 @@ logout = () => {
     return (
       <div className='login-wrapper'>
         <div className={this.state.showModal?'modal-bcg':''} onClick={this.closeModal}></div>
-        <div className='login-wrapper__div'>
-          {!logged ? (<a href="" onClick={ (e) => {e.preventDefault(); this.openModal(true);} }>
-            {dataStore.login.logIn}
-          </a>)
-          :
-          (<a onClick={(e) => {e.preventDefault(); this.logout();}}>
-            Wyloguj {userName}
-          </a>)
+        <div className={'login-wrapper__div' + (logged?' login-wrapper__welcome':'')}>
+          {!logged ?
+            (<a href="" onClick={ (e) => {e.preventDefault(); this.openModal(true);} }>
+              {dataStore.login.logIn}
+            </a>)
+            :
+            (<span>Witaj, {userName}</span>)
         }
         </div>
         <div className='login-wrapper__div'>
-          <a href="" onClick={ (e) => {e.preventDefault(); this.openModal(false);} }>
-            {dataStore.login.newAcc}
-          </a>
+          {!logged ?
+            (<a href="" onClick={ (e) => {e.preventDefault(); this.openModal(false);} }>
+              {dataStore.login.newAcc}
+            </a>)
+            :
+            (<a onClick={(e) => {e.preventDefault(); this.logout();}}>
+              Wyloguj się
+            </a>)
+          }
         </div>
         {this.state.showModal &&
           <Portal>
@@ -105,6 +128,7 @@ logout = () => {
               onRegisterHandler={this.onRegisterHandler}
               closeModal={this.closeModal}
               showLogin={this.state.showLogin}
+              authError={this.state.authError}
             />
           </Portal>}
       </div>
