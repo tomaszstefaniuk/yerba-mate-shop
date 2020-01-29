@@ -40,9 +40,13 @@ transporter.verify((error, success) => {
   }
 });
 
-const productsApi = require("./api/products");
-const mailApi = require("./api/mail");
+app.set('secret', '12341234')
 
+const productsApi = require("./api/product");
+const mailApi = require("./api/mail");
+const authController = require('./api/controllers/auth')
+
+api.use('/auth', authController)
 api.get("/product/pagination", productsApi.pagination); // => api/product/pagination?type={X}
 api.get("/product/many", productsApi.getMany);
 api.get("/product", productsApi.get);
@@ -72,3 +76,5 @@ app.use(express.static('build'));
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
+
+module.exports = app

@@ -1,4 +1,4 @@
-const Product = require("../schemas/Product");
+const Product = require("./models/Product");
 const mongoose = require("mongoose");
 
 function getMany(req, res) {

@@ -1,13 +1,15 @@
 import React from 'react';
 import './Modal.scss';
 
-
 class Modal extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      showLogin: props.showLogin
+      showLogin: props.showLogin,
+      password: '',
+      email: '',
+      name: ''
     };
   }
 
@@ -18,50 +20,46 @@ class Modal extends React.Component {
   }
 
   render() {
+
+    const { name, password, email, showLogin } = this.state
+
     return (
       <div className='modal-wrapper'>
         <span className='modal-closeX' onClick={this.props.closeModal}>×</span>
         <div className='modal-header'>
           <h1
             onClick={() => {this.showLoginHandler(true)}}
-            className={this.state.showLogin?'modal-header__h1':''}
+            className={showLogin?'modal-header__h1':''}
           >
             Zaloguj się
           </h1>
           <h1
             onClick={() => {this.showLoginHandler(false)}}
-            className={!this.state.showLogin?'modal-header__h1':''}
+            className={!showLogin?'modal-header__h1':''}
           >
             Zarejestruj się
           </h1>
         </div>
-        {!this.state.showLogin?
+
           <div className='modal-newAcc-form'>
-            <form action="">
+            <form >
+              {!showLogin &&
               <div>
-                  <input name="yourName" placeholder="Twoje imię" required type="text" />
+                  <input name="yourName" value={name} onChange={({ target }) => this.setState({ name: target.value })} placeholder="Twoje imię" required type="text" />
+              </div>
+            }
+              <div>
+                  <input name="yourEmail" value={email} onChange={({ target }) => this.setState({ email: target.value })}  placeholder="Twój e-mail" required type="email" />
               </div>
               <div>
-                  <input name="yourEmail" placeholder="Twój e-mail" required type="email" />
+                  <input name="password" value={password} onChange={({ target }) => this.setState({ password: target.value })} placeholder="Utwórz hasło" required type="password" />
               </div>
-              <div>
-                  <input name="password" placeholder="Utwórz hasło" required type="password" />
-              </div>
-              <button type="submit">Zarejestruj się</button>
-            </form>
-          </div>:
-          <div className='modal-login-form'>
-            <form action="">
-              <div>
-                  <input name="yourEmail" placeholder="Twój e-mail" required type="email" />
-              </div>
-              <div>
-                  <input name="password" placeholder="Twoje hasło" required type="password" />
-              </div>
-              <button type="submit">Zaloguj się</button>
+              <button onClick={showLogin ?
+                (e) => this.props.onLoginHandler(e, { email, password }) :
+                (e) => this.props.onRegisterHandler(e, { name, email, password })}>
+                {showLogin ? 'Zaloguj się' : 'Zarejestruj się' }</button>
             </form>
           </div>
-        }
       </div>
     );
   }
