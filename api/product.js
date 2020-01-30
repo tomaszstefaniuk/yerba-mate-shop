@@ -85,7 +85,15 @@ function del(req, res) { // usunięcie produktu
 }
 
 function post(req, res) { // edytowanie produktu
-  res.send('post')
+  const { id } = req.body;
+
+  Product.findByIdAndUpdate({ "_id": id }, req.body, { new: true }, (err, result) => {
+    if (err) {
+      let errors = { "product": err };
+      res.status(500).json(errors);
+    }
+    res.status(200).json(result);
+  });
 }
 
 function pagination(req, res) {
