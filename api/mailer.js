@@ -17,8 +17,8 @@ const transporter = nodemailer.createTransport({
 const sendMail = (mail) => {
   return new Promise((resolve,reject) => {
     transporter.sendMail(mail, (err, info) => {
-        if (err) return reject({ message: err })
-        resolve(info)
+      if (err) return reject({ message: err })
+      resolve(info)
     })
   })
 }

@@ -15,7 +15,7 @@ const CartItem = ({
     <div className='preview-cart-item'>
       <div className='preview-cart-item__name'>{name}</div>
       <div className='preview-cart-item__price'>{`${price ? price.toFixed(2) : 0}zł`}</div>
-      <i class="fas fa-trash-alt" onClick={(e) => onItemDelete(_id)}></i>
+      <i className="fas fa-trash-alt" onClick={(e) => onItemDelete(_id)}></i>
     </div>
   );
 }
@@ -23,11 +23,8 @@ const CartItem = ({
 class PreviewCart extends React.Component {
   render() {
     const { items, onItemDelete, handleBasketSubmit } = this.props;
-    const itemsPrice = Number(items.reduce(
-      (total, item) => Number(item.price) + total,
-      0
-    ).toFixed(2));
-    console.error(items)
+    const itemsPrice = Number(items.reduce((total, item) =>
+      Number(item.price) + total, 0).toFixed(2));
     return (
       <div
         className='preview-cart-container'
@@ -35,18 +32,20 @@ class PreviewCart extends React.Component {
         onMouseLeave={() => this.props.showPreviewCart(false)}
       >
         <div className='preview-cart'>
-          <div className='preview-cart-item-container'>{items.length <= 0 ? (
-            `(Brak produktów w koszyku)`
-          ) : (
-            items.map(item => (
-              <CartItem
-                key={uid(item)}
-                _id={item._id}
-                name={item.name}
-                price={item.price}
-                onItemDelete={onItemDelete} />
-            ))
-          )}</div>
+          <div className='preview-cart-item-container'>
+            {items.length <= 0 ?
+              (`(Brak produktów w koszyku)`) :
+              (items.map(item => (
+                <CartItem
+                  key={uid(item)}
+                  _id={item._id}
+                  name={item.name}
+                  price={item.price}
+                  onItemDelete={onItemDelete}
+                />
+              )))
+            }
+          </div>
           <div className='preview-cart__line'></div>
           <div className='preview-cart__total'>
             <div className='preview-cart__total__sub-div'>

@@ -21,13 +21,13 @@ class Cart extends React.Component {
     try {
       const { user, items } = this.props
       if (user.hasOwnProperty('_id')) {
+        alert('Dziękujemy! Na skrzynkę pocztową otrzymasz maila potwierdzającego zamówienie.');
         const { data } = await productService.submitBasket(items, user._id)
-        console.warn(data)
       } else {
-        console.warn('uzytkownik nie zalgowany')
+        alert('Użytkownik niezalogowany!')
       }
     } catch(e) {
-      console.log(e)
+      console.log('e:', e)
     }
   }
 

@@ -9,7 +9,14 @@ class Contact extends React.Component {
 
   constructor() {
     super()
-    this.state = { name: '', email: '', subject: '', message: '' };
+    this.state = {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      sendOk: false,
+      sendError: false
+    };
   }
 
   handleSubmit = (e) => {
@@ -18,21 +25,18 @@ class Contact extends React.Component {
     mailService.post({ name, email, subject, message })
     .then(res => {
       if (res.status) {
-        this.setState({ ...initialState })
-        alert('Pomyślnie wysłano');
+        this.setState({ ...initialState, sendOk: true })
       } else {
-        alert('Wystąpił błąd');
+        this.setState({ sendError: true })
       }
     });
   }
 
   handleValueChange = (key, value) => {
-    console.log('set state for: ', key, value)
-    this.setState({ [key]: value })
+    this.setState({ [key]: value, sendOk: false, sendError: false })
   };
 
   render() {
-
     const { name, email, subject, message } = this.state
 
     return (
@@ -72,6 +76,10 @@ class Contact extends React.Component {
                 className='contact__message-input'
                 onChange={e => this.handleValueChange('message', e.target.value)}/>
           </div>
+          {this.state.sendOk &&
+            <div className='contact-send-status'>Dziękujemy za wiadomość!</div>}
+          {this.state.sendError &&
+            <div className='contact-send-status'>Coś poszło nie tak..</div>}
           <button type="submit">Wyślij</button>
         </form>
       </div>
