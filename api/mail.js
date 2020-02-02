@@ -1,23 +1,26 @@
+const {sendMail} = require('./mailer')
+
 function post(req, res) {
   const { name, email, subject, message } = req.body;
   const content = `name: ${name} \n email: ${email} \n message: ${message} `;
   const mail = {
-    from: name,
-    to: process.env.SMTP_DELIVERY_ADDRESS,
-    subject: subject,
+    from: 'testdlayerby@onet.pl',
+    to: 'esemku@icloud.com',
+    cc: email,
+    subject: 'Informacja z formularza, ' + subject,
     text: content
   };
 
-  transporter.sendMail(mail, (err, data) => {
-    if (err) {
-      res.status(500).json({
-        errors: err
-      });
-    } else {
+  sendMail(mail).then((data) => {
       res.json({
-       status: 'success'
+       status: 'success',
+       data
      });
-    }
+  }).catch(e => {
+    res.status(500).json({
+      status: false,
+      msg: e
+    });
   });
 }
 

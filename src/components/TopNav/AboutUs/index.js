@@ -1,13 +1,10 @@
 import React from 'react';
 import styles from './AboutUs.scss';
 import __html from 'data/TopNav/aboutUs';
+import withAutoScroll from 'components/hoc/withAutoScroll';
 
 
 class AboutUs extends React.Component {
-
-  componentDidMount() {
-    window.scrollTo({ top: 200, behavior: 'smooth' });
-  }
 
   render() {
     return <div dangerouslySetInnerHTML={{ __html }} />;
@@ -15,4 +12,4 @@ class AboutUs extends React.Component {
 }
 
 
-export default AboutUs;
+export default withAutoScroll(AboutUs, 200);

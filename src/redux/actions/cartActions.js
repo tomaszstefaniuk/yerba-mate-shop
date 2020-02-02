@@ -1,9 +1,9 @@
 import cartConstants from '../constants/cartConstants';
 
-function add(_id) {
+function add(item) {
   return {
     type: cartConstants.ADD,
-    _id
+    item
   };
 }
 

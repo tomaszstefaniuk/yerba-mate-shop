@@ -1,13 +1,10 @@
 import React from 'react';
 import './FindUs.scss';
 import __html from 'data/Footer/findUs';
+import withAutoScroll from 'components/hoc/withAutoScroll';
 
 
 class FindUs extends React.Component {
-
-  componentDidMount() {
-    window.scrollTo({ top: 300, behavior: 'smooth' });
-  }
 
   render() {
     return <div dangerouslySetInnerHTML={{ __html }} />;
@@ -15,4 +12,4 @@ class FindUs extends React.Component {
 }
 
 
-export default FindUs;
+export default withAutoScroll(FindUs);

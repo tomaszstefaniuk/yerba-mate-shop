@@ -1,12 +1,10 @@
 import React from 'react';
-import styles from './Delivery.scss';
+import './Delivery.scss';
 import __html from 'data/Footer/delivery';
+import withAutoScroll from 'components/hoc/withAutoScroll';
 
 
 class Delivery extends React.Component {
-  componentDidMount() {
-    window.scrollTo({ top: 300, behavior: 'smooth' });
-  }
 
   render() {
     return <div dangerouslySetInnerHTML={{ __html }} />;
@@ -14,4 +12,4 @@ class Delivery extends React.Component {
 }
 
 
-export default Delivery;
+export default withAutoScroll(Delivery);

@@ -1,13 +1,10 @@
 import React from 'react';
 import dataStore from '../../../data/dataStore.json';
-import styles from './WhyYerba.scss';
+import './WhyYerba.scss';
+import withAutoScroll from 'components/hoc/withAutoScroll';
 
 
 class WhyYerba extends React.Component {
-
-  componentDidMount() {
-    window.scrollTo({ top: 200, behavior: 'smooth' });
-  }
 
   render() {
     const items = [];
@@ -27,4 +24,4 @@ class WhyYerba extends React.Component {
 }
 
 
-export default WhyYerba;
+export default withAutoScroll(WhyYerba, 200);

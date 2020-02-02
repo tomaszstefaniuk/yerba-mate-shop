@@ -1,9 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import dataStore from '../../data/dataStore.json';
-import styles from './TopNav.scss';
-
-//App components
+import './TopNav.scss';
 
 
 class TopNav extends React.Component {

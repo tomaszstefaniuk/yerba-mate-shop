@@ -1,4 +1,5 @@
 const ITEMS_PER_PAGE = process.env.REACT_APP_PRODUCTS_PER_PAGE;
+const { makeRequest } = require('./makeRequest')
 
 function getProducts({ type='', itemsPerPage=ITEMS_PER_PAGE, page=0, search='?' }={}) {
   const typeQuery = type ? `type=${type}&` : '';
@@ -32,6 +33,14 @@ function getPagination(type=false, itemsPerPage=ITEMS_PER_PAGE, search='?') {
   );
 }
 
+function submitBasket(items, userId) {
+  return makeRequest({
+    method: 'POST',
+    url: `${process.env.REACT_APP_API_URL}order/submit`,
+    data: { items, userId }
+  })
+}
+
 // TO-DO:
 /*
 jeżeli query jest obecne to wygląda tak "?q={value}"
@@ -41,5 +50,6 @@ jeżeli query jest obecne to wygląda tak "?q={value}"
 export default {
   getProducts,
   getManyProducts,
-  getPagination
+  getPagination,
+  submitBasket
 };

@@ -12,8 +12,22 @@ class Cart extends React.Component {
     super();
 
     this.state = {
-      items: [],
       showPreviewCart: false
+    }
+  }
+
+  handleBasketSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const { user, items } = this.props
+      if (user.hasOwnProperty('_id')) {
+        const { data } = await productService.submitBasket(items, user._id)
+        console.warn(data)
+      } else {
+        console.warn('uzytkownik nie zalgowany')
+      }
+    } catch(e) {
+      console.log(e)
     }
   }
 
@@ -24,16 +38,10 @@ class Cart extends React.Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.items !== this.props.items) {
-      productService.getManyProducts(nextProps.items)
-      .then(items => this.setState({ items }))
-    }
-  }
-
   render() {
 
-    const { items, showPreviewCart } = this.state;
+    const { showPreviewCart } = this.state;
+    const { items } = this.props;
 
     return (
       <div className='cart-wrapper'>
@@ -53,6 +61,7 @@ class Cart extends React.Component {
         {this.state.showPreviewCart &&
           <PreviewCart
             items={items}
+            handleBasketSubmit={this.handleBasketSubmit}
             onItemDelete={this.props.delItem}
             showPreviewCart={this.togglePreviewCart}/>
         }
@@ -63,6 +72,6 @@ class Cart extends React.Component {
 
 const mapDispatchToProps = { delItem: cartActions.del };
 
-const mapStateToProps = state => ({ items: state.cartReducer.items });
+const mapStateToProps = state => ({ items: state.cartReducer.items, user: state.userReducer });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

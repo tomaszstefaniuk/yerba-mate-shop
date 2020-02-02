@@ -6,16 +6,17 @@ import Portal from '../Portal';
 import Modal from './Modal';
 import AuthService from 'services/authService'
 
+import { connect } from 'react-redux';
+import userActions from 'redux/actions/userActions';
+
 class LoginHeader extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       showModal: false,
       showLogin: false,
-      logged: false,
-      userName: '',
-      authError: false
+      authError: false,
     };
   }
 
@@ -35,13 +36,9 @@ class LoginHeader extends React.Component {
       return;
     }
     try {
-      const data = await AuthService.register({ name, password, email })
-      // @TODO przeniesc do czesto uzywanych (common.js) (np. doAfterLogin())
-      window.localStorage.token = data.data.token;
-      window.localStorage.name = data.data.name;
+      const { data } = await AuthService.register({ name, password, email })
+      this.props.addItem(data)
       this.setState({
-        userName: data.data.name,
-        logged: true,
         showModal: false
       });
     } catch(e) {
@@ -61,18 +58,14 @@ class LoginHeader extends React.Component {
       return;
     }
     try {
-      const data = await AuthService.login({ password, email })
-      // @TODO przeniesc do czesto uzywanych (common.js) (np. doAfterLogin())
-      window.localStorage.token = data.data.token;
-      window.localStorage.name = data.data.name;
+      const {data} = await AuthService.login({ password, email })
+      this.props.addItem(data)
+      window.localStorage.user = JSON.stringify(data)
       this.setState({
-        userName: data.data.name,
-        logged: true,
         showModal: false
       })
-      this.props.closeModal();
     } catch(e) {
-        console.warn(e);
+        console.warn(e.message);
         this.setState({
           authError: true
         });
@@ -80,12 +73,8 @@ class LoginHeader extends React.Component {
   }
 
   logout = () => {
-    window.localStorage.token = null
-    window.localStorage.name = null
-    this.setState({
-      userName: '',
-      logged: false
-    })
+    this.props.delItem()
+    delete window.localStorage.user
   }
 
   closeModal = () => {
@@ -95,23 +84,33 @@ class LoginHeader extends React.Component {
     });
   }
 
+  componentDidMount() {
+    console.warn(window.localStorage.user)
+    try {
+      this.props.addItem(JSON.parse(window.localStorage.user))
+    } catch(e) {
+      console.warn(e.message)
+    }
+  }
+
   render() {
 
-    const { userName, logged } = this.state
+    const { userReducer } = this.props
+
     return (
       <div className='login-wrapper'>
         <div className={this.state.showModal?'modal-bcg':''} onClick={this.closeModal}></div>
-        <div className={'login-wrapper__div' + (logged?' login-wrapper__welcome':'')}>
-          {!logged ?
+        <div className={'login-wrapper__div' + (userReducer.hasOwnProperty('_id')?' login-wrapper__welcome':'')}>
+          {!userReducer.hasOwnProperty('_id') ?
             (<a href="" onClick={ (e) => {e.preventDefault(); this.openModal(true);} }>
               {dataStore.login.logIn}
             </a>)
             :
-            (<span>Witaj, {userName}</span>)
+            (<span>Witaj, {userReducer.name}</span>)
         }
         </div>
         <div className='login-wrapper__div'>
-          {!logged ?
+          {!userReducer.hasOwnProperty('_id') ?
             (<a href="" onClick={ (e) => {e.preventDefault(); this.openModal(false);} }>
               {dataStore.login.newAcc}
             </a>)
@@ -137,4 +136,10 @@ class LoginHeader extends React.Component {
 }
 
 
-export default LoginHeader;
+const mapDispatchToProps = { addItem: userActions.add, delItem: userActions.del };
+
+const mapStateToProps = state => {
+  return { userReducer: state.userReducer }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginHeader);

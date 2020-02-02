@@ -1,13 +1,11 @@
-function post({ name, email, subject, message }) {
-  return fetch(
-    `${process.env.REACT_APP_API_URL}mail`,
-    {
-      mode: 'cors',
+const { makeRequest } = require('./makeRequest')
+
+function post(data) {
+  return makeRequest({
+      url: `${process.env.REACT_APP_API_URL}mail`,
       method: 'POST',
-      body: JSON.stringify({ name, email, subject, message })
-    }
-  )
-  .then(res => res.json());
+      data
+    })
 }
 
 export default { post };

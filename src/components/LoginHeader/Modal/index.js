@@ -81,7 +81,7 @@ class Modal extends React.Component {
                 name="password"
                 value={password}
                 onChange={({ target }) => this.setState({ password: target.value })}
-                placeholder="Utwórz hasło"
+                placeholder="Twoje hasło"
                 required type="password"
               />
             </div>
@@ -95,6 +95,5 @@ class Modal extends React.Component {
     );
   }
 }
-
 
 export default Modal;

@@ -6,25 +6,35 @@ import './Contact.scss';
 const initialState = { name: '', email: '', subject: '', message: '' };
 
 class Contact extends React.Component {
-  state = initialState;
+
+  constructor() {
+    super()
+    this.state = { name: '', email: '', subject: '', message: '' };
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, subject, message } = this.state;
     mailService.post({ name, email, subject, message })
     .then(res => {
-      if (res.status === 'success') {
+      if (res.status) {
+        this.setState({ ...initialState })
         alert('Pomyślnie wysłano');
-        this.setState(initialState)
       } else {
         alert('Wystąpił błąd');
       }
     });
   }
 
-  handleValueChange = (key, value) => this.setState({ [key]: value });
+  handleValueChange = (key, value) => {
+    console.log('set state for: ', key, value)
+    this.setState({ [key]: value })
+  };
 
   render() {
+
+    const { name, email, subject, message } = this.state
+
     return (
       <div className='contact'>
         <h1>Napisz do nas</h1>
@@ -33,30 +43,34 @@ class Contact extends React.Component {
               <input
                 placeholder="Twoje imię"
                 required
+                value={name}
                 type="text"
-                onClick={e => this.handleValueChange('name', e.target.value)}/>
+                onChange={e => this.handleValueChange('name', e.target.value)}/>
           </div>
           <div>
               <input
                 placeholder="Twój e-mail"
                 required
+                value={email}
                 type="text"
-                onClick={e => this.handleValueChange('email', e.target.value)}/>
+                onChange={e => this.handleValueChange('email', e.target.value)}/>
           </div>
           <div>
               <input
                 placeholder="Temat"
                 required
+                value={subject}
                 type="text"
-                onClick={e => this.handleValueChange('subject', e.target.value)}/>
+                onChange={e => this.handleValueChange('subject', e.target.value)}/>
           </div>
           <div>
               <input
                 placeholder="Treść wiadomości"
                 required
+                value={message}
                 type="text"
                 className='contact__message-input'
-                onClick={e => this.handleValueChange('message', e.target.value)}/>
+                onChange={e => this.handleValueChange('message', e.target.value)}/>
           </div>
           <button type="submit">Wyślij</button>
         </form>

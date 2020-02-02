@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import dataStore from '../../data/dataStore.json';
-import styles from './Footer.scss';
+import './Footer.scss';
 
 
 class Footer extends React.Component {

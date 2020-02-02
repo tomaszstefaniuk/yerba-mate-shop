@@ -11,7 +11,10 @@ const formatPrice = (price) => {
   return `${priceFloorValue},${priceDecimalValues} zł`;
 }
 
-const Product = ({ _id, name, price, imgSrc, addProduct }) => {
+const Product = (product) => {
+
+  const { _id, name, price, imgSrc, addProduct } = product
+
   let addScaleDown = false;
   if (name==='CBSe Limon 0,5kg' || name==='CBSe Naranja 0,5kg'
     || name==='Cruz De Malta Naranja 0,5kg' || name==='Cruz De Malta Limon 0,5kg'
@@ -34,7 +37,7 @@ const Product = ({ _id, name, price, imgSrc, addProduct }) => {
       <p className='product__desc'>{name}</p>
       <div className='product__btn-div'>
         <p className='product__btn-div__price'>{formatPrice(price)}</p>
-        <button type="button" onClick={e => addProduct(_id)}>
+        <button type="button" onClick={e => addProduct(product)}>
           Dodaj do<br />koszyka
         </button>
       </div>

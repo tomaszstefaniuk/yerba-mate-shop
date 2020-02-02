@@ -1,6 +1,6 @@
 import React from 'react';
 import withAutoScroll from 'components/hoc/withAutoScroll';
-import styles from './Policy.scss';
+import './Policy.scss';
 import __html from 'data/Footer/policy';
 
 

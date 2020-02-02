@@ -8,12 +8,13 @@ const CartItem = ({
   _id,
   name,
   price,
-  onItemDelete
+  onItemDelete,
+  handleBasketSubmit
 }) => {
   return (
     <div className='preview-cart-item'>
       <div className='preview-cart-item__name'>{name}</div>
-      <div className='preview-cart-item__price'>{`${price.toFixed(2)}zł`}</div>
+      <div className='preview-cart-item__price'>{`${price ? price.toFixed(2) : 0}zł`}</div>
       <i class="fas fa-trash-alt" onClick={(e) => onItemDelete(_id)}></i>
     </div>
   );
@@ -21,12 +22,12 @@ const CartItem = ({
 
 class PreviewCart extends React.Component {
   render() {
-    const { items, onItemDelete } = this.props;
+    const { items, onItemDelete, handleBasketSubmit } = this.props;
     const itemsPrice = Number(items.reduce(
       (total, item) => Number(item.price) + total,
       0
     ).toFixed(2));
-
+    console.error(items)
     return (
       <div
         className='preview-cart-container'
@@ -62,7 +63,7 @@ class PreviewCart extends React.Component {
             </div>
           </div>
           <div className='preview-cart__line'></div>
-          <button className='preview-cart__order-btn'>ZAMÓW</button>
+          <button onClick={handleBasketSubmit} className='preview-cart__order-btn'>ZAMÓW</button>
         </div>
       </div>
     );
